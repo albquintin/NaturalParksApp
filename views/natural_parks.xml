@@ -1,0 +1,77 @@
+<odoo>
+        <!--Vistas para el alojamiento-->
+        <record model="ir.ui.view" id="acommodation_form_view">
+            <field name="name">acommodation.form</field>
+            <field name="model">naturalparks.acommodation</field>
+            <field name="arch" type="xml">
+                <form string="Acommodation Form">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="capacity"/>
+                            <field name="category"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        
+        <record model="ir.actions.act_window" id="acommodation_list_action">
+            <field name="name">Acommodation</field>
+            <field name="res_model">naturalparks.acommodation</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">Create the different types of acommodation
+                </p>
+            </field>
+        </record>
+
+         <!-- top level menu: no parent -->
+        <menuitem id="main_naturalparks_menu" name="NaturalParks"/>
+        <!-- A first level in the left side menu is needed
+             before using action= attribute -->
+        <menuitem id="naturalparks_menu" name="NaturalParks"
+                  parent="main_naturalparks_menu"/>
+        <!-- the following menuitem should appear *after*
+             its parent videojuegos_menu and *after* its
+             action genre_list_action -->
+
+        <menuitem id="acommodation_menu" name="Acommodation"
+            parent="naturalparks_menu"
+            action="acommodation_list_action"/>
+
+        <!--Vistas para las excursiones-->
+        <record model="ir.ui.view" id="trip_form_view">
+            <field name="name">trip.form</field>
+            <field name="model">naturalparks.trip</field>
+            <field name="arch" type="xml">
+                <form string="Trip Form">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="trip_type"/>
+                            <field name="trip_day"/>
+                            <field name="trip_time"/>
+                            <field name="acommodation_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="trip_list_action">
+            <field name="name">Trip</field>
+            <field name="res_model">naturalparks.trip</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">Create a new trip
+                </p>
+            </field>
+        </record>
+
+        
+        <menuitem id="trip_menu" name="Trip"
+            parent="naturalparks_menu"
+            action="trip_list_action"/>
+</odoo>
