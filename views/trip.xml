@@ -1,0 +1,35 @@
+<odoo>
+
+        <record model="ir.ui.view" id="trip_form_view">
+            <field name="name">trip.form</field>
+            <field name="model">naturalparks.trip</field>
+            <field name="arch" type="xml">
+                <form string="Trip Form">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="trip_type"/>
+                            <field name="trip_time"/>
+                            <field name="acommodation_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="trip_list_action">
+            <field name="name">Trip</field>
+            <field name="res_model">naturalparks.trip</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">Create a new trip
+                </p>
+            </field>
+        </record>
+
+        
+        <menuitem id="trip_menu" name="Trip"
+            parent="naturalparks_menu"
+            action="trip_list_action"/>
+
+</odoo>

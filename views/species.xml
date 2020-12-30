@@ -1,0 +1,103 @@
+<odoo>
+        <!--Plant-->
+        <record model="ir.ui.view" id="plant_form_view">
+            <field name="name">plant.form</field>
+            <field name="model">naturalparks.plant</field>
+            <field name="arch" type="xml">
+                <form string="Plant Form">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="common_name"/>
+                            <field name="number_of_specimens"/>
+                            <field name="flowering"/>
+                            <field name="flowering_period"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="plant_list_action">
+            <field name="name">Plant</field>
+            <field name="res_model">naturalparks.plant</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">Create a new plant
+                </p>
+            </field>
+        </record>
+
+        
+        <menuitem id="plant_menu" name="Plant"
+            parent="naturalparks_menu"
+            action="plant_list_action"/>
+
+        <!--Animal-->
+        <record model="ir.ui.view" id="animal_form_view">
+            <field name="name">animal.form</field>
+            <field name="model">naturalparks.animal</field>
+            <field name="arch" type="xml">
+                <form string="Animal Form">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="common_name"/>
+                            <field name="number_of_specimens"/>
+                            <field name="alimentation"/>
+                            <field name="mating_season"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="animal_list_action">
+            <field name="name">Animal</field>
+            <field name="res_model">naturalparks.animal</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">Create a new animal
+                </p>
+            </field>
+        </record>
+
+        
+        <menuitem id="animal_menu" name="Animal"
+            parent="naturalparks_menu"
+            action="animal_list_action"/>
+
+        <!--Mineral-->
+        <record model="ir.ui.view" id="mineral_form_view">
+            <field name="name">mineral.form</field>
+            <field name="model">naturalparks.mineral</field>
+            <field name="arch" type="xml">
+                <form string="Mineral Form">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="common_name"/>
+                            <field name="number_of_specimens"/>
+                            <field name="mineral_type"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="mineral_list_action">
+            <field name="name">Mineral</field>
+            <field name="res_model">naturalparks.mineral</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">Create a new mineral
+                </p>
+            </field>
+        </record>
+
+        
+        <menuitem id="mineral_menu" name="Mineral"
+            parent="naturalparks_menu"
+            action="mineral_list_action"/>
+
+</odoo>

@@ -25,7 +25,11 @@
 
     # always loaded
     'data': [
-        'views/natural_parks.xml',
+        'views/acommodation.xml',
+        'views/trip.xml',
+        'views/visitor.xml',
+        'views/species.xml',
+        'views/community.xml',
     ],
     # only loaded in demonstration mode
     #'demo': [
