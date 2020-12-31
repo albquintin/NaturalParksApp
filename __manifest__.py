@@ -30,6 +30,8 @@
         'views/visitor.xml',
         'views/species.xml',
         'views/community.xml',
+        'views/natural_park.xml',
+        'views/area.xml',
     ],
     # only loaded in demonstration mode
     #'demo': [

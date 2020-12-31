@@ -1,0 +1,35 @@
+<odoo>
+
+        <record model="ir.ui.view" id="naturalpark_form_view">
+            <field name="name">natural_park.form</field>
+            <field name="model">naturalparks.natural_park</field>
+            <field name="arch" type="xml">
+                <form string="Natural Park Form">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="starting_date"/>
+                            <field name="extension"/>
+                            <field name="community_ids"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="naturalpark_list_action">
+            <field name="name">Natural Park</field>
+            <field name="res_model">naturalparks.natural_park</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">Create a new natural park
+                </p>
+            </field>
+        </record>
+
+        
+        <menuitem id="naturalpark_menu" name="Natural Park"
+            parent="naturalparks_menu"
+            action="naturalpark_list_action"/>
+
+</odoo>
