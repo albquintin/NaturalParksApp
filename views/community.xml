@@ -9,6 +9,7 @@
                         <group>
                             <field name="name"/>
                             <field name="extension"/>
+                            <field name="administrative_authority"/>
                         </group>
                     </sheet>
                 </form>

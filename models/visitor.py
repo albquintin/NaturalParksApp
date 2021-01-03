@@ -9,3 +9,4 @@ class Visitor(models.Model):
     job = fields.Char()
 
     acommodation_id = fields.Many2one('naturalparks.acommodation', ondelete='cascade', string="Acommodation")
+    management_id = fields.Many2one('naturalparks.management', string="Person who registered this visitor")

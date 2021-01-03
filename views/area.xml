@@ -10,6 +10,7 @@
                             <field name="name"/>
                             <field name="extension"/>
                             <field name="natural_park_id"/>
+                            <field name="community_id"/>
                         </group>
                     </sheet>
                 </form>

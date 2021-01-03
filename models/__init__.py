@@ -5,3 +5,4 @@ from . import visitor
 from . import community
 from . import natural_park
 from . import area
+from . import staff

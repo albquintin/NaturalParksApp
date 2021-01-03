@@ -1,0 +1,190 @@
+<odoo>
+        <!--Management-->
+        <record model="ir.ui.view" id="management_form_view">
+            <field name="name">management.form</field>
+            <field name="model">naturalparks.management</field>
+            <field name="arch" type="xml">
+                <form string="Management Employee Form">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="dni"/>
+                            <field name="social_security"/>
+                            <field name="natural_park_id"/>
+                            <field name="address"/>
+                            <field name="mobile_phone"/>
+                            <field name="landline"/>
+                            <field name="salary"/>
+                            <field name="number_entrance"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="management_list_action">
+            <field name="name">Management</field>
+            <field name="res_model">naturalparks.management</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">Create a new Management Employee
+                </p>
+            </field>
+        </record>
+
+        
+        <menuitem id="management_menu" name="Management Employee"
+            parent="naturalparks_menu"
+            action="management_list_action"/>
+
+        <!--Vigilance-->
+         <record model="ir.ui.view" id="vigilance_form_view">
+            <field name="name">vigilance.form</field>
+            <field name="model">naturalparks.vigilance</field>
+            <field name="arch" type="xml">
+                <form string="Vigilance Employee Form">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="dni"/>
+                            <field name="social_security"/>
+                            <field name="natural_park_id"/>
+                            <field name="address"/>
+                            <field name="mobile_phone"/>
+                            <field name="landline"/>
+                            <field name="salary"/>
+                            <field name="area_id"/>
+                            <field name="car_type"/>
+                            <field name="car_enrollment"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="vigilance_list_action">
+            <field name="name">Vigilance</field>
+            <field name="res_model">naturalparks.vigilance</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">Create a new Vigilance Employee
+                </p>
+            </field>
+        </record>
+
+        
+        <menuitem id="vigilance_menu" name="Vigilance Employee"
+            parent="naturalparks_menu"
+            action="vigilance_list_action"/>
+        
+        <!--Research-->
+        <record model="ir.ui.view" id="research_form_view">
+            <field name="name">research.form</field>
+            <field name="model">naturalparks.research</field>
+            <field name="arch" type="xml">
+                <form string="Research Employee Form">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="dni"/>
+                            <field name="social_security"/>
+                            <field name="natural_park_id"/>
+                            <field name="address"/>
+                            <field name="mobile_phone"/>
+                            <field name="landline"/>
+                            <field name="salary"/>
+                            <field name="title"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="research_list_action">
+            <field name="name">Research</field>
+            <field name="res_model">naturalparks.research</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">Create a new Research Employee
+                </p>
+            </field>
+        </record>
+
+        
+        <menuitem id="research_menu" name="Research Employee"
+            parent="naturalparks_menu"
+            action="research_list_action"/>
+
+        <!--Project(Research)-->
+        <record model="ir.ui.view" id="project_form_view">
+            <field name="name">project.form</field>
+            <field name="model">naturalparks.project</field>
+            <field name="arch" type="xml">
+                <form string="Project Form">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="species_id"/>
+                            <field name="research_ids"/>
+                            <field name="budget"/>
+                            <field name="project_time"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="project_list_action">
+            <field name="name">Project</field>
+            <field name="res_model">naturalparks.project</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">Create a new Project
+                </p>
+            </field>
+        </record>
+
+        
+        <menuitem id="project_menu" name="Research Project"
+            parent="naturalparks_menu"
+            action="project_list_action"/>
+
+        <!--Conservation-->
+        <record model="ir.ui.view" id="conservation_form_view">
+            <field name="name">conservation.form</field>
+            <field name="model">naturalparks.conservation</field>
+            <field name="arch" type="xml">
+                <form string="Conservation Employee Form">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="dni"/>
+                            <field name="social_security"/>
+                            <field name="natural_park_id"/>
+                            <field name="address"/>
+                            <field name="mobile_phone"/>
+                            <field name="landline"/>
+                            <field name="salary"/>
+                            <field name="area_id"/>
+                            <field name="specialty"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="conservation_list_action">
+            <field name="name">Conservation</field>
+            <field name="res_model">naturalparks.conservation</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">Create a new Conservation Employee
+                </p>
+            </field>
+        </record>
+
+        
+        <menuitem id="conservation_menu" name="Conservation Employee"
+            parent="naturalparks_menu"
+            action="conservation_list_action"/>        
+</odoo>

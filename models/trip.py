@@ -8,3 +8,4 @@ class Trip(models.Model):
     trip_time = fields.Datetime()
 
     acommodation_id = fields.Many2one('naturalparks.acommodation', ondelete='cascade', string="Acommodation Organizer")
+    visitor_ids = fields.Many2many('naturalparks.visitor', string="Visitors")

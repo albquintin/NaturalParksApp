@@ -12,6 +12,8 @@
                             <field name="number_of_specimens"/>
                             <field name="flowering"/>
                             <field name="flowering_period"/>
+                            <field name="is_eaten"/>
+                            <field name="animal_ids"/>
                         </group>
                     </sheet>
                 </form>
@@ -46,6 +48,7 @@
                             <field name="number_of_specimens"/>
                             <field name="alimentation"/>
                             <field name="mating_season"/>
+                            <field name="is_eaten"/>
                         </group>
                     </sheet>
                 </form>

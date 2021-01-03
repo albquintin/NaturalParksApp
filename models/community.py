@@ -5,3 +5,4 @@ class Community(models.Model):
 
     name = fields.Char(string="Name", required=True)
     extension = fields.Integer(string="Extension (in km2)", required=True)
+    administrative_authority = fields.Char(required=True)

@@ -12,6 +12,7 @@
                             <field name="address"/>
                             <field name="job"/>
                             <field name="acommodation_id"/>
+                            <field name="management_id"/>
                         </group>
                     </sheet>
                 </form>

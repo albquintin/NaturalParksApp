@@ -7,3 +7,4 @@ class Area(models.Model):
     extension = fields.Integer(string="Extension (in km2)", required=True)
 
     natural_park_id = fields.Many2one('naturalparks.natural_park', string="Natural Park")
+    community_id = fields.Many2one('naturalparks.community', string="Community")

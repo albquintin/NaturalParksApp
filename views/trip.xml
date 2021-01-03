@@ -11,6 +11,7 @@
                             <field name="trip_type"/>
                             <field name="trip_time"/>
                             <field name="acommodation_id"/>
+                            <field name="visitor_ids"/>
                         </group>
                     </sheet>
                 </form>
