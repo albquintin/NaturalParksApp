@@ -23,7 +23,12 @@ class Vigilance(models.Model):
     _inherit = 'naturalparks.staff'
 
     area_id = fields.Many2one('naturalparks.area', string="Area", required=True)
-    car_type = fields.Integer()
+    car_id = fields.Many2one('naturalparks.car', string="Car", required=True)
+
+class Car(models.Model):
+    _name = 'naturalparks.car'
+
+    name = fields.Char(string="Car Type")
     car_enrollment = fields.Char()
 
 class Research(models.Model):

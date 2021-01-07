@@ -54,8 +54,7 @@
                             <field name="landline"/>
                             <field name="salary"/>
                             <field name="area_id"/>
-                            <field name="car_type"/>
-                            <field name="car_enrollment"/>
+                            <field name="car_id"/>
                         </group>
                     </sheet>
                 </form>
@@ -76,6 +75,37 @@
         <menuitem id="vigilance_menu" name="Vigilance Employee"
             parent="naturalparks_menu"
             action="vigilance_list_action"/>
+
+        <!--Car-->
+         <record model="ir.ui.view" id="car_form_view">
+            <field name="name">car.form</field>
+            <field name="model">naturalparks.car</field>
+            <field name="arch" type="xml">
+                <form string="Car Form">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="car_enrollment"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="car_list_action">
+            <field name="name">Car</field>
+            <field name="res_model">naturalparks.car</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">Create a new Car
+                </p>
+            </field>
+        </record>
+
+        
+        <menuitem id="car_menu" name="Car"
+            parent="naturalparks_menu"
+            action="car_list_action"/>
         
         <!--Research-->
         <record model="ir.ui.view" id="research_form_view">
