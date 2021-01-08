@@ -9,6 +9,7 @@
                             <field name="name"/>
                             <field name="capacity"/>
                             <field name="category"/>
+                            <field name="natural_park_id"/>
                         </group>
                     </sheet>
                 </form>

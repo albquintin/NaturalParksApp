@@ -8,5 +8,5 @@ class Visitor(models.Model):
     address = fields.Char()
     job = fields.Char()
 
-    acommodation_id = fields.Many2one('naturalparks.acommodation', ondelete='cascade', string="Acommodation")
+    acommodation_id = fields.Many2one('naturalparks.acommodation', ondelete='cascade', string="Acommodation", required=True)
     management_id = fields.Many2one('naturalparks.management', string="Person who registered this visitor")

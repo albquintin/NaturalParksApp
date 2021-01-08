@@ -9,6 +9,7 @@
                         <group>
                             <field name="name"/>
                             <field name="common_name"/>
+                            <field name="area_ids"/>
                             <field name="number_of_specimens"/>
                             <field name="blooming"/>
                             <field name="blooming_period"/>
@@ -45,6 +46,7 @@
                         <group>
                             <field name="name"/>
                             <field name="common_name"/>
+                            <field name="area_ids"/>
                             <field name="number_of_specimens"/>
                             <field name="alimentation"/>
                             <field name="mating_season"/>
@@ -81,6 +83,7 @@
                         <group>
                             <field name="name"/>
                             <field name="common_name"/>
+                            <field name="area_ids"/>
                             <field name="number_of_specimens"/>
                             <field name="mineral_type"/>
                         </group>

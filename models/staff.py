@@ -1,4 +1,4 @@
-from odoo import models, fields, api
+from odoo import models, fields, api, exceptions
 
 class Staff(models.Model):
     _name = 'naturalparks.staff'
@@ -8,9 +8,15 @@ class Staff(models.Model):
     social_security = fields.Char(required=True)
     natural_park_id = fields.Many2one('naturalparks.natural_park', ondelete='cascade', string="Natural Park", required=True)
     address = fields.Char()
-    mobile_phone = fields.Integer()
-    landline = fields.Integer()
+    mobile_phone = fields.Char()
+    landline = fields.Char()
     salary = fields.Integer(string="Salary (in €)")
+
+    @api.constrains('salary')
+    def _check_park_has_extension(self):
+        for r in self:
+            if r.salary <= 0:
+                raise exceptions.ValidationError("The salary must be positive")
 
 class Management(models.Model):
     _name = 'naturalparks.management'
@@ -25,17 +31,24 @@ class Vigilance(models.Model):
     area_id = fields.Many2one('naturalparks.area', string="Area", required=True)
     car_id = fields.Many2one('naturalparks.car', string="Car", required=True)
 
+    @api.constrains('natural_park_id', 'area_id')
+    def _check_area_is_in_the_park(self):
+        for r in self:
+            if r.area_id.natural_park_id != r.natural_park_id:
+                raise exceptions.ValidationError("The area must be in the park")
+
+
 class Car(models.Model):
     _name = 'naturalparks.car'
 
-    name = fields.Char(string="Car Type")
+    name = fields.Char(string="Car Type", required=True)
     car_enrollment = fields.Char()
 
 class Research(models.Model):
     _name = 'naturalparks.research'
     _inherit = 'naturalparks.staff'
 
-    title = fields.Char()
+    title = fields.Char(required=True)
 
 class Project(models.Model):
     _name = 'naturalparks.project'
@@ -46,9 +59,21 @@ class Project(models.Model):
     budget = fields.Float(string="Budget (in €)", digits=(8, 2))
     project_time = fields.Integer(string="Project Time (in months)")
 
+    @api.constrains('budget')
+    def _check_park_has_extension(self):
+        for r in self:
+            if r.budget <= 0:
+                raise exceptions.ValidationError("The budget must be positive")
+
 class Conservation(models.Model):
     _name = 'naturalparks.conservation'
     _inherit = 'naturalparks.staff'
 
     area_id = fields.Many2one('naturalparks.area', string="Area", required=True)
     specialty = fields.Selection([('cleaning', 'Cleaning'), ('roads', 'Roads'), ('others', 'Others')]) 
+
+    @api.constrains('natural_park_id', 'area_id')
+    def _check_area_is_in_the_park(self):
+        for r in self:
+            if r.area_id.natural_park_id != r.natural_park_id:
+                raise exceptions.ValidationError("The area must be in the park")
