@@ -21,6 +21,23 @@
             </field>
         </record>
 
+        <record model="ir.ui.view" id="plant_tree_view">
+            <field name="name">plant.tree</field>
+            <field name="model">naturalparks.plant</field>
+            <field name="arch" type="xml">
+                <tree string="Plant Tree">
+                    <field name="name"/>
+                    <field name="common_name"/>
+                    <field name="area_ids"/>
+                    <field name="number_of_specimens"/>
+                    <field name="blooming"/>
+                    <field name="blooming_period"/>
+                    <field name="is_eaten"/>
+                    <field name="animal_ids"/>
+                </tree>
+            </field>
+        </record>
+
         <record model="ir.actions.act_window" id="plant_list_action">
             <field name="name">Plant</field>
             <field name="res_model">naturalparks.plant</field>
@@ -31,6 +48,26 @@
             </field>
         </record>
 
+        <record model="ir.ui.view" id="plant_search_view">
+            <field name="name">plant.search</field>
+            <field name="model">naturalparks.plant</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="common_name"/>
+                    <filter name="endangered_species" string="Endangered Species"
+                            domain="[('number_of_specimens', '&lt;', 200)]"/>
+                    <filter name="blooming" string="Blooming"
+                            domain="[('blooming', '=', True)]"/>
+                    <filter name="not_blooming" string="Not Blooming"
+                            domain="[('blooming', '=', False)]"/>
+                    <group string="Group By">
+                        <filter name="by_blooming_period" string="Blooming Period"
+                                context="{'group_by': 'blooming_period'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
         
         <menuitem id="plant_menu" name="Plant"
             parent="naturalparks_menu"
@@ -58,6 +95,23 @@
             </field>
         </record>
 
+        <record model="ir.ui.view" id="animal_tree_view">
+            <field name="name">animal.tree</field>
+            <field name="model">naturalparks.animal</field>
+            <field name="arch" type="xml">
+                <tree string="Animal Tree">
+                    <field name="name"/>
+                    <field name="common_name"/>
+                    <field name="area_ids"/>
+                    <field name="number_of_specimens"/>
+                    <field name="alimentation"/>
+                    <field name="mating_season"/>
+                    <field name="is_eaten"/>
+                    <field name="animal_ids"/>
+                </tree>
+            </field>
+        </record>
+
         <record model="ir.actions.act_window" id="animal_list_action">
             <field name="name">Animal</field>
             <field name="res_model">naturalparks.animal</field>
@@ -68,6 +122,28 @@
             </field>
         </record>
 
+        <record model="ir.ui.view" id="animal_search_view">
+            <field name="name">animal.search</field>
+            <field name="model">naturalparks.animal</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="common_name"/>
+                    <filter name="endangered_species" string="Endangered Species"
+                            domain="[('number_of_specimens', '&lt;', 200)]"/>
+                    <filter name="carnivore" string="Carnivore"
+                            domain="[('alimentation', '=', 'carnivore')]"/>
+                    <filter name="herbivore" string="Herbivore"
+                            domain="[('alimentation', '=', 'herbivore')]"/>
+                    <filter name="omnivore" string="Omnivore"
+                            domain="[('alimentation', '=', 'omnivore')]"/>
+                    <group string="Group By">
+                        <filter name="by_mating_season" string="Mating Season"
+                                context="{'group_by': 'mating_season'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
         
         <menuitem id="animal_menu" name="Animal"
             parent="naturalparks_menu"
@@ -84,11 +160,23 @@
                             <field name="name"/>
                             <field name="common_name"/>
                             <field name="area_ids"/>
-                            <field name="number_of_specimens"/>
                             <field name="mineral_type"/>
                         </group>
                     </sheet>
                 </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="mineral_tree_view">
+            <field name="name">mineral.tree</field>
+            <field name="model">naturalparks.mineral</field>
+            <field name="arch" type="xml">
+                <tree string="Mineral Tree">
+                    <field name="name"/>
+                    <field name="common_name"/>
+                    <field name="area_ids"/>
+                    <field name="mineral_type"/>
+                </tree>
             </field>
         </record>
 
@@ -102,6 +190,20 @@
             </field>
         </record>
 
+        <record model="ir.ui.view" id="mineral_search_view">
+            <field name="name">mineral.search</field>
+            <field name="model">naturalparks.mineral</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="common_name"/>
+                    <filter name="stone" string="Stone"
+                            domain="[('mineral_type', '=', 'stone')]"/>
+                    <filter name="crystal" string="Crystal"
+                            domain="[('mineral_type', '=', 'crystal')]"/>
+                </search>
+            </field>
+        </record>
         
         <menuitem id="mineral_menu" name="Mineral"
             parent="naturalparks_menu"

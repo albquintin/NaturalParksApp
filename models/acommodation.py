@@ -5,7 +5,7 @@ class Acommodation(models.Model):
 
     name = fields.Char(string="Name", required=True)
     capacity = fields.Integer(required=True)
-    category = fields.Selection([('uno', '*'), ('dos','**'), ('tres', '***'), ('cuatro', '****'), ('cinco', '*****')])
+    category = fields.Selection([('one', '*'), ('two','**'), ('three', '***'), ('four', '****'), ('five', '*****')])
     
     natural_park_id = fields.Many2one('naturalparks.natural_park', string="Natural Park", required=True)
 

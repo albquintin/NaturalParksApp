@@ -19,6 +19,21 @@
             </field>
         </record>
 
+        <record model="ir.ui.view" id="visitor_tree_view">
+            <field name="name">visitor.tree</field>
+            <field name="model">naturalparks.visitor</field>
+            <field name="arch" type="xml">
+                <tree string="Visitor Tree">
+                    <field name="dni"/>
+                    <field name="name"/>
+                    <field name="address"/>
+                    <field name="job"/>
+                    <field name="acommodation_id"/>
+                    <field name="management_id"/>
+                </tree>
+            </field>
+        </record>
+
         <record model="ir.actions.act_window" id="visitor_list_action">
             <field name="name">Visitor</field>
             <field name="res_model">naturalparks.visitor</field>
@@ -29,6 +44,20 @@
             </field>
         </record>
 
+        <record model="ir.ui.view" id="visitor_search_view">
+            <field name="name">visitor.search</field>
+            <field name="model">naturalparks.visitor</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="dni"/>
+                    <field name="name"/>
+                    <group string="Group By">
+                        <filter name="by_acommodation" string="Acommodation"
+                                context="{'group_by': 'acommodation_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
         
         <menuitem id="visitor_menu" name="Visitor"
             parent="naturalparks_menu"

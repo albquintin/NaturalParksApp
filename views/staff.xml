@@ -22,6 +22,24 @@
             </field>
         </record>
 
+        <record model="ir.ui.view" id="management_tree_view">
+            <field name="name">management.tree</field>
+            <field name="model">naturalparks.management</field>
+            <field name="arch" type="xml">
+                <tree string="Management Employee Tree">
+                    <field name="name"/>
+                    <field name="dni"/>
+                    <field name="social_security"/>
+                    <field name="natural_park_id"/>
+                    <field name="address"/>
+                    <field name="mobile_phone"/>
+                    <field name="landline"/>
+                    <field name="salary"/>
+                    <field name="number_entrance"/>
+                </tree>
+            </field>
+        </record>
+
         <record model="ir.actions.act_window" id="management_list_action">
             <field name="name">Management</field>
             <field name="res_model">naturalparks.management</field>
@@ -29,6 +47,26 @@
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">Create a new Management Employee
                 </p>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="management_search_view">
+            <field name="name">management.search</field>
+            <field name="model">naturalparks.management</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="dni"/>
+                    <field name="social_security"/>
+                    <filter name="high_salary" string="High Salary"
+                            domain="[('salary', '&gt;', 1500)]"/>
+                    <filter name="low_salary" string="Low Salary"
+                            domain="[('salary', '&lt;', 1500)]"/>
+                    <group string="Group By">
+                        <filter name="by_natural_park" string="Natural Park"
+                                context="{'group_by': 'natural_park_id'}"/>
+                    </group>
+                </search>
             </field>
         </record>
 
@@ -61,6 +99,25 @@
             </field>
         </record>
 
+        <record model="ir.ui.view" id="vigilance_tree_view">
+            <field name="name">vigilance.tree</field>
+            <field name="model">naturalparks.vigilance</field>
+            <field name="arch" type="xml">
+                <tree string="Vigilance Employee Tree">
+                    <field name="name"/>
+                    <field name="dni"/>
+                    <field name="social_security"/>
+                    <field name="natural_park_id"/>
+                    <field name="address"/>
+                    <field name="mobile_phone"/>
+                    <field name="landline"/>
+                    <field name="salary"/>
+                    <field name="area_id"/>
+                    <field name="car_id"/>
+                </tree>
+            </field>
+        </record>
+
         <record model="ir.actions.act_window" id="vigilance_list_action">
             <field name="name">Vigilance</field>
             <field name="res_model">naturalparks.vigilance</field>
@@ -71,7 +128,30 @@
             </field>
         </record>
 
-        
+        <record model="ir.ui.view" id="vigilance_search_view">
+            <field name="name">vigilance.search</field>
+            <field name="model">naturalparks.vigilance</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="dni"/>
+                    <field name="social_security"/>
+                    <filter name="high_salary" string="High Salary"
+                            domain="[('salary', '&gt;', 1500)]"/>
+                    <filter name="low_salary" string="Low Salary"
+                            domain="[('salary', '&lt;', 1500)]"/>
+                    <group string="Group By">
+                        <filter name="by_natural_park" string="Natural Park"
+                                context="{'group_by': 'natural_park_id'}"/>
+                    </group>
+                    <group string="Group By">
+                        <filter name="by_area" string="Area"
+                                context="{'group_by': 'area_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
         <menuitem id="vigilance_menu" name="Vigilance Employee"
             parent="naturalparks_menu"
             action="vigilance_list_action"/>
@@ -92,6 +172,17 @@
             </field>
         </record>
 
+        <record model="ir.ui.view" id="car_tree_view">
+            <field name="name">car.tree</field>
+            <field name="model">naturalparks.car</field>
+            <field name="arch" type="xml">
+                <tree string="Car Tree">
+                    <field name="name"/>
+                    <field name="car_enrollment"/>
+                </tree>
+            </field>
+        </record>
+
         <record model="ir.actions.act_window" id="car_list_action">
             <field name="name">Car</field>
             <field name="res_model">naturalparks.car</field>
@@ -99,6 +190,17 @@
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">Create a new Car
                 </p>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="car_search_view">
+            <field name="name">car.search</field>
+            <field name="model">naturalparks.car</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="car_enrollment"/>
+                </search>
             </field>
         </record>
 
@@ -130,6 +232,24 @@
             </field>
         </record>
 
+        <record model="ir.ui.view" id="research_tree_view">
+            <field name="name">research.tree</field>
+            <field name="model">naturalparks.research</field>
+            <field name="arch" type="xml">
+                <tree string="Research Employee Tree">
+                    <field name="name"/>
+                    <field name="dni"/>
+                    <field name="social_security"/>
+                    <field name="natural_park_id"/>
+                    <field name="address"/>
+                    <field name="mobile_phone"/>
+                    <field name="landline"/>
+                    <field name="salary"/>
+                    <field name="title"/>
+                </tree>
+            </field>
+        </record>
+
         <record model="ir.actions.act_window" id="research_list_action">
             <field name="name">Research</field>
             <field name="res_model">naturalparks.research</field>
@@ -140,6 +260,25 @@
             </field>
         </record>
 
+        <record model="ir.ui.view" id="research_search_view">
+            <field name="name">research.search</field>
+            <field name="model">naturalparks.research</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="dni"/>
+                    <field name="social_security"/>
+                    <filter name="high_salary" string="High Salary"
+                            domain="[('salary', '&gt;', 1500)]"/>
+                    <filter name="low_salary" string="Low Salary"
+                            domain="[('salary', '&lt;', 1500)]"/>
+                    <group string="Group By">
+                        <filter name="by_natural_park" string="Natural Park"
+                                context="{'group_by': 'natural_park_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
         
         <menuitem id="research_menu" name="Research Employee"
             parent="naturalparks_menu"
@@ -164,6 +303,20 @@
             </field>
         </record>
 
+        <record model="ir.ui.view" id="project_tree_view">
+            <field name="name">project.tree</field>
+            <field name="model">naturalparks.project</field>
+            <field name="arch" type="xml">
+                <tree string="Project Tree">
+                    <field name="name"/>
+                    <field name="species_id"/>
+                    <field name="research_ids"/>
+                    <field name="budget"/>
+                    <field name="project_time"/>
+                </tree>
+            </field>
+        </record>
+
         <record model="ir.actions.act_window" id="project_list_action">
             <field name="name">Project</field>
             <field name="res_model">naturalparks.project</field>
@@ -174,7 +327,24 @@
             </field>
         </record>
 
-        
+        <record model="ir.ui.view" id="project_search_view">
+            <field name="name">project.search</field>
+            <field name="model">naturalparks.project</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <filter name="high_budget" string="High Budget"
+                            domain="[('budget', '&gt;', 30000)]"/>
+                    <filter name="low_budget" string="Low Budget"
+                            domain="[('budget', '&lt;', 30000)]"/>
+                    <group string="Group By">
+                        <filter name="by_species" string="Species"
+                                context="{'group_by': 'species_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
         <menuitem id="project_menu" name="Research Project"
             parent="naturalparks_menu"
             action="project_list_action"/>
@@ -203,6 +373,25 @@
             </field>
         </record>
 
+        <record model="ir.ui.view" id="conservation_tree_view">
+            <field name="name">conservation.tree</field>
+            <field name="model">naturalparks.conservation</field>
+            <field name="arch" type="xml">
+                <tree string="Conservation Employee Tree">
+                    <field name="name"/>
+                    <field name="dni"/>
+                    <field name="social_security"/>
+                    <field name="natural_park_id"/>
+                    <field name="address"/>
+                    <field name="mobile_phone"/>
+                    <field name="landline"/>
+                    <field name="salary"/>
+                    <field name="area_id"/>
+                    <field name="specialty"/>
+                </tree>
+            </field>
+        </record>
+
         <record model="ir.actions.act_window" id="conservation_list_action">
             <field name="name">Conservation</field>
             <field name="res_model">naturalparks.conservation</field>
@@ -213,6 +402,35 @@
             </field>
         </record>
 
+        <record model="ir.ui.view" id="conservation_search_view">
+            <field name="name">conservation.search</field>
+            <field name="model">naturalparks.conservation</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="dni"/>
+                    <field name="social_security"/>
+                    <filter name="high_salary" string="High Salary"
+                            domain="[('salary', '&gt;', 1500)]"/>
+                    <filter name="low_salary" string="Low Salary"
+                            domain="[('salary', '&lt;', 1500)]"/>
+                    <filter name="cleaning" string="Cleaning"
+                            domain="[('specialty', '=', 'cleaning')]"/>
+                    <filter name="roads" string="Roads"
+                            domain="[('specialty', '=', 'roads')]"/>
+                    <filter name="others" string="Others"
+                            domain="[('specialty', '=', 'others')]"/>
+                    <group string="Group By">
+                        <filter name="by_natural_park" string="Natural Park"
+                                context="{'group_by': 'natural_park_id'}"/>
+                    </group>
+                    <group string="Group By">
+                        <filter name="by_area" string="Area"
+                                context="{'group_by': 'area_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
         
         <menuitem id="conservation_menu" name="Conservation Employee"
             parent="naturalparks_menu"

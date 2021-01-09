@@ -17,6 +17,19 @@
             </field>
         </record>
 
+        <record model="ir.ui.view" id="area_tree_view">
+            <field name="name">area.tree</field>
+            <field name="model">naturalparks.area</field>
+            <field name="arch" type="xml">
+                <tree string="Area Tree">
+                    <field name="name"/>
+                    <field name="extension"/>
+                    <field name="natural_park_id"/>
+                    <field name="community_id"/>
+                </tree>
+            </field>
+        </record>
+
         <record model="ir.actions.act_window" id="area_list_action">
             <field name="name">Area</field>
             <field name="res_model">naturalparks.area</field>
@@ -24,6 +37,20 @@
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">Create a new area
                 </p>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="area_search_view">
+            <field name="name">area.search</field>
+            <field name="model">naturalparks.area</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <group string="Group By">
+                        <filter name="by_natural_park" string="Natural Park"
+                                context="{'group_by': 'natural_park_id'}"/>
+                    </group>
+                </search>
             </field>
         </record>
 

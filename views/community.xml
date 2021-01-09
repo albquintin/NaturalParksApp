@@ -5,6 +5,9 @@
             <field name="model">naturalparks.community</field>
             <field name="arch" type="xml">
                 <form string="Community Form">
+                    <header>
+                        <button name="cancel" string="cancel" class="oe_highlight"/>
+                    </header>
                     <sheet>
                         <group>
                             <field name="name"/>
@@ -13,6 +16,18 @@
                         </group>
                     </sheet>
                 </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="community_tree_view">
+            <field name="name">community.tree</field>
+            <field name="model">naturalparks.community</field>
+            <field name="arch" type="xml">
+                <tree string="Community Tree">
+                    <field name="name"/>
+                    <field name="extension"/>
+                    <field name="administrative_authority"/>
+                </tree>
             </field>
         </record>
 

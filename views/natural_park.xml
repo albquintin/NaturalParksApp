@@ -17,6 +17,19 @@
             </field>
         </record>
 
+        <record model="ir.ui.view" id="naturalpark_tree_view">
+            <field name="name">natural_park.tree</field>
+            <field name="model">naturalparks.natural_park</field>
+            <field name="arch" type="xml">
+                <tree string="Natural Park Tree">
+                    <field name="name"/>
+                    <field name="starting_date"/>
+                    <field name="extension"/>
+                    <field name="community_ids"/>
+                </tree>
+            </field>
+        </record>
+
         <record model="ir.actions.act_window" id="naturalpark_list_action">
             <field name="name">Natural Park</field>
             <field name="res_model">naturalparks.natural_park</field>
@@ -26,7 +39,6 @@
                 </p>
             </field>
         </record>
-
         
         <menuitem id="naturalpark_menu" name="Natural Park"
             parent="naturalparks_menu"

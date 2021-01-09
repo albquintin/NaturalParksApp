@@ -8,7 +8,7 @@ class Trip(models.Model):
     trip_time = fields.Datetime()
 
     natural_park_id = fields.Many2one('naturalparks.natural_park', string="Natural Park", required=True)
-    acommodation_id = fields.Many2one('naturalparks.acommodation', ondelete='cascade', string="Acommodation Organizer")
+    acommodation_id = fields.Many2one('naturalparks.acommodation', ondelete='cascade', string="Acommodation Organizer", required=True)
     visitor_ids = fields.Many2many('naturalparks.visitor', string="Visitors")
 
     @api.constrains('natural_park_id', 'acommodation_id')

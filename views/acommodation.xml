@@ -16,7 +16,19 @@
             </field>
         </record>
 
-        
+        <record model="ir.ui.view" id="acommodation_tree_view">
+            <field name="name">acommodation.tree</field>
+            <field name="model">naturalparks.acommodation</field>
+            <field name="arch" type="xml">
+                <tree string="Acommodation Tree">
+                    <field name="name"/>
+                    <field name="capacity"/>
+                    <field name="category"/>
+                    <field name="natural_park_id"/>                
+                </tree>
+            </field>
+        </record>
+
         <record model="ir.actions.act_window" id="acommodation_list_action">
             <field name="name">Acommodation</field>
             <field name="res_model">naturalparks.acommodation</field>
@@ -27,15 +39,33 @@
             </field>
         </record>
 
-         <!-- top level menu: no parent -->
+        <record model="ir.ui.view" id="acommodation_search_view">
+            <field name="name">acommodation.search</field>
+            <field name="model">naturalparks.acommodation</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <filter name="high_quality" string="High Quality"
+                            domain="[('category', 'in', ['five', 'four', 'three'])]"/>
+                    <filter name="low_quality" string="Low Quality"
+                            domain="[('category', 'in', ['one', 'two'])]"/>
+                    <filter name="high_capacity" string="High Capacity"
+                            domain="[('capacity', '&gt;', 50)]"/>
+                    <filter name="low capacity" string="Low Capacity"
+                            domain="[('capacity', '&lt;', 50)]"/>
+                    <group string="Group By">
+                        <filter name="by_natural_park" string="Natural Parks"
+                                context="{'group_by': 'natural_park_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+
         <menuitem id="main_naturalparks_menu" name="NaturalParks"/>
-        <!-- A first level in the left side menu is needed
-             before using action= attribute -->
+
         <menuitem id="naturalparks_menu" name="NaturalParks"
                   parent="main_naturalparks_menu"/>
-        <!-- the following menuitem should appear *after*
-             its parent videojuegos_menu and *after* its
-             action genre_list_action -->
 
         <menuitem id="acommodation_menu" name="Acommodation"
             parent="naturalparks_menu"

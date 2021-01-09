@@ -11,7 +11,7 @@ class Species(models.Model):
     @api.constrains('number_of_specimens')
     def _check_number_is_positive(self):
         for r in self:
-            if r.extension <= 0:
+            if r.number_of_specimens <= 0:
                 raise exceptions.ValidationError("The number must be positive")
 
 class Plant(models.Model):
