@@ -296,7 +296,8 @@
                             <field name="species_id"/>
                             <field name="research_ids"/>
                             <field name="budget"/>
-                            <field name="project_time"/>
+                            <field name="starting_date"/>
+                            <field name="ending_date"/>
                         </group>
                     </sheet>
                 </form>
@@ -312,15 +313,27 @@
                     <field name="species_id"/>
                     <field name="research_ids"/>
                     <field name="budget"/>
-                    <field name="project_time"/>
+                    <field name="starting_date"/>
+                    <field name="ending_date"/>
                 </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="project_calendar_view">
+            <field name="name">project.calendar</field>
+            <field name="model">naturalparks.project</field>
+            <field name="arch" type="xml">
+                <calendar string="Project Calendar" date_start="starting_date" date_stop="ending_date" quick_add="False">
+                    <field name="name"/>
+                    <field name="species_id"/>
+                </calendar>
             </field>
         </record>
 
         <record model="ir.actions.act_window" id="project_list_action">
             <field name="name">Project</field>
             <field name="res_model">naturalparks.project</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">tree,form,calendar</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">Create a new Project
                 </p>

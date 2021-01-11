@@ -1,3 +1,4 @@
+from datetime import timedelta
 from odoo import models, fields, api, exceptions
 
 class Staff(models.Model):
@@ -54,10 +55,11 @@ class Project(models.Model):
     _name = 'naturalparks.project'
 
     name = fields.Char(string="Project Name", required=True)
-    species_id = fields.Many2one('naturalparks.specie', string="Species", required=True)
+    species_id = fields.Many2one('naturalparks.species', string="Species", required=True)
     research_ids = fields.Many2many('naturalparks.research', string="Researchers", required=True)
     budget = fields.Float(string="Budget (in €)", digits=(8, 2))
-    project_time = fields.Integer(string="Project Time (in months)")
+    starting_date = fields.Date()
+    ending_date = fields.Date()
 
     @api.constrains('budget')
     def _check_park_has_extension(self):

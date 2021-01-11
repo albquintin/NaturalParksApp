@@ -5,7 +5,8 @@ class Trip(models.Model):
 
     name = fields.Char(string="Definition of the trip", required=True)
     trip_type = fields.Selection([('car', 'Car'), ('walking', 'Walking')]) 
-    trip_time = fields.Datetime()
+    trip_starting = fields.Datetime()
+    trip_ending = fields.Datetime()
 
     natural_park_id = fields.Many2one('naturalparks.natural_park', string="Natural Park", required=True)
     acommodation_id = fields.Many2one('naturalparks.acommodation', ondelete='cascade', string="Acommodation Organizer", required=True)
