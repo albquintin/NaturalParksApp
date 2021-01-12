@@ -9,8 +9,8 @@
                         <group>
                             <field name="name"/>
                             <field name="trip_type"/>
-                            <field name="trip_starting"/>
-                            <field name="trip_ending"/>
+                            <field name="starting_date"/>
+                            <field name="ending_date"/>
                             <field name="natural_park_id"/>
                             <field name="acommodation_id"/>
                             <field name="visitor_ids"/>
@@ -27,8 +27,8 @@
                 <tree string="Trip Tree">
                     <field name="name"/>
                     <field name="trip_type"/>
-                    <field name="trip_starting"/>
-                    <field name="trip_ending"/>
+                    <field name="starting_date"/>
+                    <field name="ending_date"/>
                     <field name="natural_park_id"/>
                     <field name="acommodation_id"/>
                 </tree>
@@ -39,7 +39,7 @@
             <field name="name">trip.calendar</field>
             <field name="model">naturalparks.trip</field>
             <field name="arch" type="xml">
-                <calendar string="Trip Calendar" date_start="trip_starting" date_stop="trip_ending" quick_add="False">
+                <calendar string="Trip Calendar" date_start="starting_date" date_stop="ending_date" quick_add="False">
                     <field name="name"/>
                     <field name="trip_type"/>
                     <field name="natural_park_id"/>

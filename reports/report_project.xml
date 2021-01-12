@@ -1,0 +1,41 @@
+<odoo>
+    <report
+        id="report_project"
+        model="naturalparks.project"
+        string="Project Report"
+        report_type="qweb-pdf"
+        name="RecuperacionOdoo.report_project"
+        file="RecuperacionOdoo.report_project"
+    />
+
+    <template id="minimal_layout_inherit" inherit_id="web.minimal_layout">
+      <xpath expr="//head" position="inside">
+             <link rel='stylesheet' href="/RecuperacionOdoo/static/src/css/style.css"/>
+      </xpath>
+    </template>
+
+    <template id="report_project">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                
+                <div class="header">
+                    <img src='/RecuperacionOdoo/static/src/img/logo.png'/>
+                    <h1>Natural Parks App</h1>
+                </div> 
+                <div class="page">
+                    <h1 t-field="doc.name"/>
+                    <p style="font-size: 22px;">Species: <span t-field="doc.species_id"/> </p>
+                    <p style="font-size: 22px;">From <span t-field="doc.starting_date"/> to <span t-field="doc.ending_date"/></p>
+                    <h2>Researchers:</h2>
+                    <ul>
+                        <t t-foreach="doc.research_ids" t-as="research">
+                            <li><span t-field="research.name" style="font-size: 22px;"/></li>
+                        </t>
+                    </ul>
+                    <p style="font-size: 22px;">The project has a <span t-field="doc.budget"/> € budget.</p>
+                </div>
+                
+            </t>
+        </t>
+    </template>
+</odoo>

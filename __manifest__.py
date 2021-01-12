@@ -33,6 +33,8 @@
         'views/natural_park.xml',
         'views/area.xml',
         'views/staff.xml',
+        'reports/report_trip.xml',
+        'reports/report_project.xml',
     ],
     # only loaded in demonstration mode
     #'demo': [

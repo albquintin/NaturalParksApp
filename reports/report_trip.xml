@@ -1,0 +1,42 @@
+<odoo>
+    <report
+        id="report_trip"
+        model="naturalparks.trip"
+        string="Trip Report"
+        report_type="qweb-pdf"
+        name="RecuperacionOdoo.report_trip"
+        file="RecuperacionOdoo.report_trip"
+    />
+
+    <template id="minimal_layout_inherit" inherit_id="web.minimal_layout">
+      <xpath expr="//head" position="inside">
+             <link rel='stylesheet' href="/RecuperacionOdoo/static/src/css/style.css"/>
+      </xpath>
+    </template>
+
+    <template id="report_trip">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                
+                <div class="header">
+                    <img src='/RecuperacionOdoo/static/src/img/logo.png'/>
+                    <h1>Natural Parks App</h1>
+                </div> 
+                <div class="page">
+                    <h1 t-field="doc.name"/>
+                    <p style="font-size: 22px;">Natural Park: <span t-field="doc.natural_park_id"/> </p>
+                    <p style="font-size: 22px;">Organized by: <span t-field="doc.acommodation_id"/> </p>
+                    <p style="font-size: 22px;">From <span t-field="doc.starting_date"/> to <span t-field="doc.ending_date"/></p>
+                    <h2>Visitors:</h2>
+                    <ul>
+                        <t t-foreach="doc.visitor_ids" t-as="visitor">
+                            <li><span t-field="visitor.name" style="font-size: 22px;"/></li>
+                        </t>
+                    </ul>
+                    <p style="font-size: 22px;">It will be a <span t-field="doc.trip_type"/> trip.</p>
+                </div>
+                
+            </t>
+        </t>
+    </template>
+</odoo>
