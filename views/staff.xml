@@ -59,9 +59,9 @@
                     <field name="dni"/>
                     <field name="social_security"/>
                     <filter name="high_salary" string="High Salary"
-                            domain="[('salary', '&gt;', 1500)]"/>
+                            domain="[('salary', '&gt;', 18000)]"/>
                     <filter name="low_salary" string="Low Salary"
-                            domain="[('salary', '&lt;', 1500)]"/>
+                            domain="[('salary', '&lt;', 18000)]"/>
                     <group string="Group By">
                         <filter name="by_natural_park" string="Natural Park"
                                 context="{'group_by': 'natural_park_id'}"/>
@@ -137,9 +137,9 @@
                     <field name="dni"/>
                     <field name="social_security"/>
                     <filter name="high_salary" string="High Salary"
-                            domain="[('salary', '&gt;', 1500)]"/>
+                            domain="[('salary', '&gt;', 18000)]"/>
                     <filter name="low_salary" string="Low Salary"
-                            domain="[('salary', '&lt;', 1500)]"/>
+                            domain="[('salary', '&lt;', 18000)]"/>
                     <group string="Group By">
                         <filter name="by_natural_park" string="Natural Park"
                                 context="{'group_by': 'natural_park_id'}"/>
@@ -269,9 +269,9 @@
                     <field name="dni"/>
                     <field name="social_security"/>
                     <filter name="high_salary" string="High Salary"
-                            domain="[('salary', '&gt;', 1500)]"/>
+                            domain="[('salary', '&gt;', 18000)]"/>
                     <filter name="low_salary" string="Low Salary"
-                            domain="[('salary', '&lt;', 1500)]"/>
+                            domain="[('salary', '&lt;', 18000)]"/>
                     <group string="Group By">
                         <filter name="by_natural_park" string="Natural Park"
                                 context="{'group_by': 'natural_park_id'}"/>
@@ -424,9 +424,9 @@
                     <field name="dni"/>
                     <field name="social_security"/>
                     <filter name="high_salary" string="High Salary"
-                            domain="[('salary', '&gt;', 1500)]"/>
+                            domain="[('salary', '&gt;', 18000)]"/>
                     <filter name="low_salary" string="Low Salary"
-                            domain="[('salary', '&lt;', 1500)]"/>
+                            domain="[('salary', '&lt;', 18000)]"/>
                     <filter name="cleaning" string="Cleaning"
                             domain="[('specialty', '=', 'cleaning')]"/>
                     <filter name="roads" string="Roads"

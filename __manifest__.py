@@ -35,6 +35,9 @@
         'views/staff.xml',
         'reports/report_trip.xml',
         'reports/report_project.xml',
+        'reports/report_visitor.xml',
+        'reports/report_research.xml',
+        'reports/report_management.xml',
     ],
     # only loaded in demonstration mode
     #'demo': [

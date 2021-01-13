@@ -11,7 +11,7 @@ class Staff(models.Model):
     address = fields.Char()
     mobile_phone = fields.Char()
     landline = fields.Char()
-    salary = fields.Integer(string="Salary (in €)")
+    salary = fields.Integer(string="Salary (in €, annual)")
 
     @api.constrains('salary')
     def _check_park_has_extension(self):

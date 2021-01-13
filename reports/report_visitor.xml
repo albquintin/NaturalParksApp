@@ -1,0 +1,44 @@
+<odoo>
+    <report
+        id="report_visitor"
+        model="naturalparks.visitor"
+        string="Visitor Report"
+        report_type="qweb-pdf"
+        name="RecuperacionOdoo.report_visitor_view"
+        file="RecuperacionOdoo.report_visitor"
+    />
+
+    <template id="minimal_layout_inherit" inherit_id="web.minimal_layout">
+      <xpath expr="//head" position="inside">
+             <link rel='stylesheet' href="/RecuperacionOdoo/static/src/css/style.css"/>
+      </xpath>
+    </template>
+
+    <template id="report_visitor_view">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                
+                <div class="header">
+                    <img src='/RecuperacionOdoo/static/src/img/logo.png'/>
+                    <h1>Natural Parks App</h1>
+                </div> 
+                <div class="page">
+                    <h1>Visitor Report</h1>
+                    <p style="font-size: 22px;">Name: <span t-field="doc.name"/> </p>
+                    <p style="font-size: 22px;">Dni: <span t-field="doc.dni"/> </p>
+                    <p style="font-size: 22px;">Address: <span t-field="doc.address"/></p>
+                    <p style="font-size: 22px;">Job: <span t-field="doc.job"/></p>
+
+                    <p style="font-size: 22px;">
+                        <span t-field="doc.name"/> is in the <span t-field="doc.acommodation_id"/>
+                        , visiting the <span t-field="doc.acommodation_id.natural_park_id"/> park.
+                    </p>
+                    <p style="font-size: 22px;">
+                        <span t-field="doc.name"/> was registered by <span t-field="doc.management_id"/>
+                    </p>
+                </div>
+                
+            </t>
+        </t>
+    </template>
+</odoo>
