@@ -1,0 +1,5 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_naturalparks_car,naturalparks.car,model_naturalparks_car,group_manager,1,1,1,1
+car_read_all,car all,model_naturalparks_car,,1,1,1,1
+access_naturalparks_community,naturalparks.community,model_naturalparks_community,group_manager,1,1,1,1
+community_read_all,community all,model_naturalparks_community,,1,1,1,1

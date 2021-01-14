@@ -25,6 +25,8 @@
 
     # always loaded
     'data': [
+        'security/security.xml',
+        'security/ir.model.access.csv',
         'views/acommodation.xml',
         'views/trip.xml',
         'views/visitor.xml',
