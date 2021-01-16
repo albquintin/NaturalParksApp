@@ -5,6 +5,12 @@
             <field name="model">naturalparks.trip</field>
             <field name="arch" type="xml">
                 <form string="Trip Form">
+                    <header>
+                        <button name="action_confirm" type="object" string="Confirm" states="draft" class="oe_highlight"/>
+                        <button name="action_done" type="object" string="Done" states="confirm" class="oe_highlight"/>
+                        <button name="action_draft" type="object"  string="Reset to draft" states="confirm,done" />
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done" />
+                    </header>
                     <sheet>
                         <group>
                             <field name="name"/>
