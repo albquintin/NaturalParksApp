@@ -60,12 +60,37 @@ class Project(models.Model):
     budget = fields.Float(string="Budget (in €)", digits=(8, 2))
     starting_date = fields.Date()
     ending_date = fields.Date()
+    color = fields.Integer()
+    state = fields.Selection([
+            ('draft', 'Draft'),
+            ('confirm', 'Confirm'),
+            ('done', 'Done'),
+        ], string='Status', readonly=True, default='draft')
 
     @api.constrains('budget')
     def _check_park_has_extension(self):
         for r in self:
             if r.budget <= 0:
                 raise exceptions.ValidationError("The budget must be positive")
+
+    def action_confirm(self):
+        for r in self:
+            r.state = 'confirm'
+            return {
+                'effect': {
+                    'fadeout': 'slow',
+                    'message': 'Trip Confirmed',
+                    'type': 'rainbow_man',
+                }
+            }
+            
+    def action_done(self):
+        for r in self:
+            r.state = 'done'
+
+    def action_draft(self):
+        for r in self:
+            r.state = 'draft'
 
 class Conservation(models.Model):
     _name = 'naturalparks.conservation'

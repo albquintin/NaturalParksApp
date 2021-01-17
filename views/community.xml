@@ -5,9 +5,6 @@
             <field name="model">naturalparks.community</field>
             <field name="arch" type="xml">
                 <form string="Community Form">
-                    <header>
-                        <button name="cancel" string="cancel" class="oe_highlight"/>
-                    </header>
                     <sheet>
                         <group>
                             <field name="name"/>

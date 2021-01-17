@@ -44,6 +44,7 @@ class Animal(models.Model):
 
     alimentation = fields.Selection([('carnivore','Carnivore'), ('herbivore','Herbivore'), ('omnivore','Omnivore')], required=True)
     mating_season = fields.Selection([('spring', 'Spring'), ('summer', 'Summer'), ('autumn', 'Autumn'), ('winter', 'Winter')])
+    color = fields.Integer()
 
     is_eaten = fields.Boolean(string="Is the animal eaten?")
     animal_ids = fields.Many2many(comodel_name='naturalparks.animal', relation='animals_eaten', column1='prey', column2='carnivores', string="Carnivores which eat this animal",
@@ -60,4 +61,5 @@ class Mineral(models.Model):
     _name = 'naturalparks.mineral'
     _inherit = 'naturalparks.species'
 
-    mineral_type = fields.Selection([('crystal', 'Crystal'), ('stone', 'Stone')])
+    mineral_type = fields.Selection([('crystal', 'Crystal'), ('stone', 'Stone')], required=True)
+    color = fields.Integer()

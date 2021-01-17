@@ -7,7 +7,7 @@ class Area(models.Model):
     extension = fields.Integer(string="Extension (in km2)", required=True)
 
     natural_park_id = fields.Many2one('naturalparks.natural_park', string="Natural Park", required=True)
-    community_id = fields.Many2one('naturalparks.community', string="Community")
+    community_id = fields.Many2one('naturalparks.community', string="Community", required=True)
 
     @api.constrains('extension')
     def _check_park_has_extension(self):
@@ -20,3 +20,4 @@ class Area(models.Model):
         for r in self:
             if r.community_id not in r.natural_park_id.community_ids:
                 raise exceptions.ValidationError("The park isn't in this community")
+            
