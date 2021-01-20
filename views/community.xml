@@ -28,10 +28,21 @@
             </field>
         </record>
 
+        <record model="ir.ui.view" id="community_graph_view">
+            <field name="name">community.graph</field>
+            <field name="model">naturalparks.community</field>
+            <field name="arch" type="xml">
+                <graph string="Communities by Extension">
+                    <field name="name"/>
+                    <field name="extension" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
         <record model="ir.actions.act_window" id="community_list_action">
             <field name="name">Community</field>
             <field name="res_model">naturalparks.community</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">tree,form,graph</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">Create a new autonomous community
                 </p>
