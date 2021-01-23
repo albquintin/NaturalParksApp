@@ -29,6 +29,17 @@
             </field>
         </record>
 
+        <record  model="ir.ui.view" id="acommodation_pivot_view">
+            <field name="name">acommodation.pivot</field>
+            <field name="model">naturalparks.acommodation</field>
+            <field name="arch" type="xml">
+                <pivot string="Trip">
+                    <field name="natural_park_id" type="row"/>
+                    <field name="name"/>
+                </pivot>
+            </field>
+        </record>
+
         <record model="ir.ui.view" id="acommodation_kanban_view">
             <field name="name">naturalparks.acommodation.kanban</field>
             <field name="model">naturalparks.acommodation</field>
@@ -79,7 +90,7 @@
         <record model="ir.actions.act_window" id="acommodation_list_action">
             <field name="name">Acommodation</field>
             <field name="res_model">naturalparks.acommodation</field>
-            <field name="view_mode">tree,form,kanban</field>
+            <field name="view_mode">tree,form,kanban,pivot</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">Create the different types of acommodation
                 </p>

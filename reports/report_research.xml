@@ -2,7 +2,7 @@
     <report
         id="report_research"
         model="naturalparks.research"
-        string="Research Report"
+        string="Researcher Report"
         report_type="qweb-pdf"
         name="RecuperacionOdoo.report_research_view"
         file="RecuperacionOdoo.report_research"
@@ -22,17 +22,18 @@
                     <img src='/RecuperacionOdoo/static/src/img/logo.png'/>
                     <h1>Natural Parks App</h1>
                 </div> 
+                <hr></hr>
                 <div class="page">
                     <h1>Researcher Report</h1>
-                    <p style="font-size: 22px;">Name: <span t-field="doc.name"/> </p>
-                    <p style="font-size: 22px;">Dni: <span t-field="doc.dni"/> </p>
-                    <p style="font-size: 22px;">Social Security: <span t-field="doc.social_security"/></p>
-                    <p style="font-size: 22px;">Mobile: <span t-field="doc.mobile_phone"/></p>
-                    <p style="font-size: 22px;">Landline: <span t-field="doc.landline"/></p>
-                    <p style="font-size: 22px;">Salary: <span t-field="doc.salary"/> €</p>
+                    <p style="font-size: 22px;"><b>Name:</b> <span t-field="doc.name"/> </p>
+                    <p style="font-size: 22px;"><b>Dni:</b> <span t-field="doc.dni"/> </p>
+                    <p style="font-size: 22px;"><b>Social Security:</b> <span t-field="doc.social_security"/></p>
+                    <p style="font-size: 22px;"><b>Mobile:</b> <span t-field="doc.mobile_phone"/></p>
+                    <p style="font-size: 22px;"><b>Landline:</b> <span t-field="doc.landline"/></p>
+                    <p style="font-size: 22px;"><b>Salary:</b> <span t-field="doc.salary"/> €</p>
                     <hr></hr>
-                    <p style="font-size: 22px;">Workplace: <span t-field="doc.natural_park_id"/></p>
-                    <p style="font-size: 22px;">Research Area: <span t-field="doc.title"/></p>
+                    <p style="font-size: 22px;"><b>Workplace:</b> <span t-field="doc.natural_park_id"/></p>
+                    <p style="font-size: 22px;"><b>Research Area:</b> <span t-field="doc.title"/></p>
                 </div>
                 
             </t>

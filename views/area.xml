@@ -30,6 +30,17 @@
             </field>
         </record>
 
+        <record  model="ir.ui.view" id="area_pivot_view">
+            <field name="name">area.pivot</field>
+            <field name="model">naturalparks.area</field>
+            <field name="arch" type="xml">
+                <pivot string="Area">
+                    <field name="natural_park_id" type="row"/>
+                    <field name="name"/>
+                </pivot>
+            </field>
+        </record>
+
         <record model="ir.ui.view" id="area_graph_view">
             <field name="name">area.graph</field>
             <field name="model">naturalparks.area</field>
@@ -44,7 +55,7 @@
         <record model="ir.actions.act_window" id="area_list_action">
             <field name="name">Area</field>
             <field name="res_model">naturalparks.area</field>
-            <field name="view_mode">tree,form,graph</field>
+            <field name="view_mode">tree,form,graph,pivot</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">Create a new area
                 </p>

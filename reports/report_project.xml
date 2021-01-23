@@ -22,17 +22,18 @@
                     <img src='/RecuperacionOdoo/static/src/img/logo.png'/>
                     <h1>Natural Parks App</h1>
                 </div> 
+                <hr></hr>
                 <div class="page">
                     <h1 t-field="doc.name"/>
-                    <p style="font-size: 22px;">Species: <span t-field="doc.species_id"/> </p>
-                    <p style="font-size: 22px;">From <span t-field="doc.starting_date"/> to <span t-field="doc.ending_date"/></p>
+                    <p style="font-size: 22px;"><b>Species:</b> <span t-field="doc.species_id"/> </p>
+                    <p style="font-size: 22px;"><b>FROM</b> <span t-field="doc.starting_date"/> <b>TO</b> <span t-field="doc.ending_date"/></p>
                     <h2>Researchers:</h2>
                     <ul>
                         <t t-foreach="doc.research_ids" t-as="research">
                             <li><span t-field="research.name" style="font-size: 22px;"/></li>
                         </t>
                     </ul>
-                    <p style="font-size: 22px;">The project has a <span t-field="doc.budget"/> € budget.</p>
+                    <p style="font-size: 22px;"><b>Budget:</b> <span t-field="doc.budget"/> €</p>
                 </div>
                 
             </t>

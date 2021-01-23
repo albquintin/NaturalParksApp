@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 {
     'name': "NaturalParks",
 
@@ -14,16 +13,11 @@
     'author': "Alberto Quintin",
     'website': "http://www.yourcompany.com",
 
-    # Categories can be used to filter modules in modules listing
-    # Check https://github.com/odoo/odoo/blob/13.0/odoo/addons/base/data/ir_module_category_data.xml
-    # for the full list
     'category': 'Test',
     'version': '0.1',
 
-    # any module necessary for this one to work correctly
     'depends': ['base', 'board'],
 
-    # always loaded
     'data': [
         'security/security.xml',
         'security/ir.model.access.csv',
@@ -35,7 +29,11 @@
         'views/natural_park.xml',
         'views/area.xml',
         'views/staff.xml',
+        'views/project.xml',
+        'views/animal_board.xml',
+        'views/plant_board.xml',
         'views/trip_board.xml',
+        'views/project_board.xml',
         'reports/report_trip.xml',
         'reports/report_project.xml',
         'reports/report_visitor.xml',

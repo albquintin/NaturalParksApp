@@ -6,8 +6,9 @@
   
 .header h1 {
     position: relative;
-    top: 38px;
-    left: 300px;
+    top: 45px;
+    left: 270px;
+    font-size: 52px;
 }
 .page{
   font-family: Arial, Helvetica, sans-serif;

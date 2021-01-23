@@ -6,3 +6,4 @@ from . import community
 from . import natural_park
 from . import area
 from . import staff
+from . import project

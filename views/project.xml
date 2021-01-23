@@ -1,0 +1,146 @@
+<odoo>
+    <record model="ir.ui.view" id="project_form_view">
+        <field name="name">project.form</field>
+        <field name="model">naturalparks.project</field>
+        <field name="arch" type="xml">
+            <form string="Project Form">
+                <header>
+                    <button name="action_confirm" type="object" string="Confirm" states="draft" class="oe_highlight"/>
+                    <button name="action_done" type="object" string="Done" states="confirm" class="oe_highlight"/>
+                    <button name="action_draft" type="object"  string="Reset to draft" states="confirm,done" />
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done" />
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="species_id"/>
+                        <field name="research_ids"/>
+                        <field name="budget"/>
+                        <field name="starting_date"/>
+                        <field name="ending_date"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="project_tree_view">
+        <field name="name">project.tree</field>
+        <field name="model">naturalparks.project</field>
+        <field name="arch" type="xml">
+            <tree string="Project Tree">
+                <field name="name"/>
+                <field name="species_id"/>
+                <field name="research_ids"/>
+                <field name="budget"/>
+                <field name="starting_date"/>
+                <field name="ending_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="project_calendar_view">
+        <field name="name">project.calendar</field>
+        <field name="model">naturalparks.project</field>
+        <field name="arch" type="xml">
+            <calendar string="Project Calendar" date_start="starting_date" date_stop="ending_date" quick_add="False">
+                <field name="name"/>
+                <field name="species_id"/>
+            </calendar>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="project_kanban_view">
+        <field name="name">naturalparks.project.kanban</field>
+        <field name="model">naturalparks.project</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="state">
+                <field name="color"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div
+                                t-attf-class="oe_kanban_color_{{kanban_getcolor(record.color.raw_value)}}
+                                            oe_kanban_global_click_edit oe_semantic_html_override
+                                            oe_kanban_card {{record.group_fancy==1 ? 'oe_kanban_card_fancy' : ''}}">
+                            <div class="oe_dropdown_kanban">
+                                <div class="oe_dropdown_toggle">
+                                    <i class="fa fa-bars fa-lg" title="Manage" aria-label="Manage"/>
+                                    <ul class="oe_dropdown_menu">
+                                        <li>
+                                            <a type="delete">Delete</a>
+                                        </li>
+                                        <li>
+                                            <ul class="oe_kanban_colorpicker"
+                                                data-field="color"/>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="oe_clear"></div>
+                            </div>
+                            <div t-attf-class="oe_kanban_content">
+                                Project Name:
+                                <field name="name"/>
+                                <br/>
+                                Species:
+                                <field name="species_id"/>
+                                <br/>
+                                Starting Date:
+                                <field name="starting_date"/>
+                                <br/>
+                                Ending Date:
+                                <field name="ending_date"/>
+                                <br/>
+                                State:
+                                <field name="state"/>
+                                
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="project_graph_view">
+        <field name="name">project.graph</field>
+        <field name="model">naturalparks.project</field>
+        <field name="arch" type="xml">
+            <graph string="Projects">
+                <field name="name"/>
+                <field name="budget" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="project_list_action">
+        <field name="name">Project</field>
+        <field name="res_model">naturalparks.project</field>
+        <field name="view_mode">tree,form,calendar,kanban,graph</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create a new Project
+            </p>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="project_search_view">
+        <field name="name">project.search</field>
+        <field name="model">naturalparks.project</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <filter name="high_budget" string="High Budget"
+                        domain="[('budget', '&gt;', 30000)]"/>
+                <filter name="low_budget" string="Low Budget"
+                        domain="[('budget', '&lt;', 30000)]"/>
+                <group string="Group By">
+                    <filter name="by_species" string="Species"
+                            context="{'group_by': 'species_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <menuitem id="project_menu" name="Research Project"
+        parent="naturalparks_menu"
+        action="project_list_action"/>
+</odoo>

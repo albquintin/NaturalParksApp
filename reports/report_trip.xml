@@ -22,18 +22,19 @@
                     <img src='/RecuperacionOdoo/static/src/img/logo.png'/>
                     <h1>Natural Parks App</h1>
                 </div> 
+                <hr></hr>
                 <div class="page">
                     <h1 t-field="doc.name"/>
-                    <p style="font-size: 22px;">Natural Park: <span t-field="doc.natural_park_id"/> </p>
-                    <p style="font-size: 22px;">Organized by: <span t-field="doc.acommodation_id"/> </p>
-                    <p style="font-size: 22px;">From <span t-field="doc.starting_date"/> to <span t-field="doc.ending_date"/></p>
+                    <p style="font-size: 22px;"><b>Natural Park:</b> <span t-field="doc.natural_park_id"/> </p>
+                    <p style="font-size: 22px;"><b>Organized by:</b> <span t-field="doc.acommodation_id"/> </p>
+                    <p style="font-size: 22px;"><b>FROM</b> <span t-field="doc.starting_date"/> <b>TO</b> <span t-field="doc.ending_date"/></p>
                     <h2>Visitors:</h2>
                     <ul>
                         <t t-foreach="doc.visitor_ids" t-as="visitor">
                             <li><span t-field="visitor.name" style="font-size: 22px;"/></li>
                         </t>
                     </ul>
-                    <p style="font-size: 22px;">It will be a <span t-field="doc.trip_type"/> trip.</p>
+                    <p style="font-size: 22px;"><b>Type Trip:</b> <span t-field="doc.trip_type"/></p>
                 </div>
                 
             </t>

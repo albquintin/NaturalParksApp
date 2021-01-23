@@ -22,12 +22,13 @@
                     <img src='/RecuperacionOdoo/static/src/img/logo.png'/>
                     <h1>Natural Parks App</h1>
                 </div> 
+                <hr></hr>
                 <div class="page">
                     <h1>Visitor Report</h1>
-                    <p style="font-size: 22px;">Name: <span t-field="doc.name"/> </p>
-                    <p style="font-size: 22px;">Dni: <span t-field="doc.dni"/> </p>
-                    <p style="font-size: 22px;">Address: <span t-field="doc.address"/></p>
-                    <p style="font-size: 22px;">Job: <span t-field="doc.job"/></p>
+                    <p style="font-size: 22px;"><b>Name:</b> <span t-field="doc.name"/> </p>
+                    <p style="font-size: 22px;"><b>Dni:</b> <span t-field="doc.dni"/> </p>
+                    <p style="font-size: 22px;"><b>Address:</b> <span t-field="doc.address"/></p>
+                    <p style="font-size: 22px;"><b>Job:</b> <span t-field="doc.job"/></p>
 
                     <p style="font-size: 22px;">
                         <span t-field="doc.name"/> is in the <span t-field="doc.acommodation_id"/>

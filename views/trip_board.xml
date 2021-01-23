@@ -22,9 +22,7 @@
                         <column>
                             <action
                                 string="Calendar"
-                                name="%(act_trip_calendar)d"
-                                height="150"
-                                width="510"/>
+                                name="%(act_trip_calendar)d"/>
                             <action
                                 string="Trips"
                                 name="%(act_trip_list)d"/>
