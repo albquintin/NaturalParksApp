@@ -21,7 +21,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base', 'board'],
 
     # always loaded
     'data': [
@@ -35,14 +35,11 @@
         'views/natural_park.xml',
         'views/area.xml',
         'views/staff.xml',
+        'views/trip_board.xml',
         'reports/report_trip.xml',
         'reports/report_project.xml',
         'reports/report_visitor.xml',
         'reports/report_research.xml',
         'reports/report_management.xml',
     ],
-    # only loaded in demonstration mode
-    #'demo': [
-    #    'demo.xml',
-    #],
 }

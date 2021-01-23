@@ -24,7 +24,7 @@ class Trip(models.Model):
         for r in self:
             if r.acommodation_id.natural_park_id != r.natural_park_id:
                 raise exceptions.ValidationError("The acommodation must be in the park")
-
+                
     def action_confirm(self):
         for r in self:
             r.state = 'confirm'
@@ -43,3 +43,5 @@ class Trip(models.Model):
     def action_draft(self):
         for r in self:
             r.state = 'draft'
+
+    

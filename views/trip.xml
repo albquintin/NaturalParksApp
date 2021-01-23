@@ -106,7 +106,6 @@
             </field>
         </record>
 
-
         <record model="ir.actions.act_window" id="trip_list_action">
             <field name="name">Trip</field>
             <field name="res_model">naturalparks.trip</field>
