@@ -20,12 +20,14 @@ class Staff(models.Model):
 
 class Management(models.Model):
     _name = 'naturalparks.management'
+    _order = 'name'
     _inherit = 'naturalparks.staff'
 
     number_entrance = fields.Integer()
 
 class Vigilance(models.Model):
     _name = 'naturalparks.vigilance'
+    _order = 'name'
     _inherit = 'naturalparks.staff'
 
     area_id = fields.Many2one('naturalparks.area', string="Area", required=True)
@@ -39,18 +41,24 @@ class Vigilance(models.Model):
 
 class Car(models.Model):
     _name = 'naturalparks.car'
+    _order = 'name'
 
     name = fields.Char(string="Car Type", required=True)
-    car_enrollment = fields.Char()
+    number_plate = fields.Char(string="Number Plate")
+    color = fields.Integer()
+    car_image = fields.Binary(string="Car Image", max_width=100, max_height=100, 
+                            verify_resolution=False)
 
 class Research(models.Model):
     _name = 'naturalparks.research'
+    _order = 'name'
     _inherit = 'naturalparks.staff'
 
     title = fields.Char(required=True)
 
 class Conservation(models.Model):
     _name = 'naturalparks.conservation'
+    _order = 'name'
     _inherit = 'naturalparks.staff'
 
     area_id = fields.Many2one('naturalparks.area', string="Area", required=True)

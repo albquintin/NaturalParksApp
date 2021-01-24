@@ -3,6 +3,7 @@ from odoo.exceptions import ValidationError
 
 class Trip(models.Model):
     _name = 'naturalparks.trip'
+    _order = 'starting_date'
 
     name = fields.Char(string="Definition of the trip", required=True)
     trip_type = fields.Selection([('car', 'Car'), ('walking', 'Walking')]) 
@@ -15,10 +16,10 @@ class Trip(models.Model):
     visitor_ids = fields.Many2many('naturalparks.visitor', string="Visitors")
     total_visitors = fields.Integer(compute='_calculate_visitors')
     state = fields.Selection([
-            ('draft', 'Draft'),
-            ('confirm', 'Confirm'),
-            ('done', 'Done'),
-        ], string='Status', readonly=True, default='draft')
+            ('1.draft', 'Draft'),
+            ('2.confirm', 'Confirm'),
+            ('3.done', 'Done'),
+        ], string='Status', readonly=True, default='1.draft')
 
     @api.onchange('natural_park_id')
     def onchange_natural_park_id_check_acommodation(self):
@@ -33,7 +34,7 @@ class Trip(models.Model):
     @api.constrains('natural_park_id', 'visitor_ids')
     def _check_visitors(self):
         for r in self:
-            if r.visitor_ids.natural_park_id != r.natural_park_id:
+            if r.visitor_ids.natural_park_id != r.natural_park_id and len(r.visitor_ids) > 0:
                 raise exceptions.ValidationError("Visitors must be in the park")
 
     @api.constrains('starting_date', 'ending_date')
@@ -49,7 +50,7 @@ class Trip(models.Model):
                 
     def action_confirm(self):
         for r in self:
-            r.state = 'confirm'
+            r.state = '2.confirm'
             return {
                 'effect': {
                     'fadeout': 'slow',
@@ -60,10 +61,10 @@ class Trip(models.Model):
             
     def action_done(self):
         for r in self:
-            r.state = 'done'
+            r.state = '3.done'
 
     def action_draft(self):
         for r in self:
-            r.state = 'draft'
+            r.state = '1.draft'
 
     

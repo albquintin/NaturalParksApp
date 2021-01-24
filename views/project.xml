@@ -5,10 +5,10 @@
         <field name="arch" type="xml">
             <form string="Project Form">
                 <header>
-                    <button name="action_confirm" type="object" string="Confirm" states="draft" class="oe_highlight"/>
-                    <button name="action_done" type="object" string="Done" states="confirm" class="oe_highlight"/>
-                    <button name="action_draft" type="object"  string="Reset to draft" states="confirm,done" />
-                    <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done" />
+                    <button name="action_confirm" type="object" string="Confirm" states="1.draft" class="oe_highlight"/>
+                    <button name="action_done" type="object" string="Done" states="2.confirm" class="oe_highlight"/>
+                    <button name="action_draft" type="object"  string="Reset to draft" states="2.confirm,3.done" />
+                    <field name="state" widget="statusbar" statusbar_visible="1.draft,2.confirm,3.done" />
                 </header>
                 <sheet>
                     <group>
@@ -28,7 +28,7 @@
         <field name="name">project.tree</field>
         <field name="model">naturalparks.project</field>
         <field name="arch" type="xml">
-            <tree decoration-muted="state == 'draft'" decoration-success="state == 'confirm'" decoration-danger="state == 'done'" string="Project Tree">
+            <tree decoration-muted="state == '1.draft'" decoration-success="state == '2.confirm'" decoration-danger="state == '3.done'" string="Project Tree">
                 <field name="name"/>
                 <field name="species_id"/>
                 <field name="research_ids"/>

@@ -3,6 +3,7 @@ from odoo import models, fields, api, exceptions
 
 class Project(models.Model):
     _name = 'naturalparks.project'
+    _order = 'starting_date'
 
     name = fields.Char(string="Project Name", required=True)
     species_id = fields.Many2one('naturalparks.species', string="Species", required=True)
@@ -12,10 +13,10 @@ class Project(models.Model):
     ending_date = fields.Date(required=True)
     color = fields.Integer()
     state = fields.Selection([
-            ('draft', 'Draft'),
-            ('confirm', 'Confirm'),
-            ('done', 'Done'),
-        ], string='Status', readonly=True, default='draft')
+            ('1.draft', 'Draft'),
+            ('2.confirm', 'Confirm'),
+            ('3.done', 'Done'),
+        ], string='Status', readonly=True, default='1.draft')
 
     @api.constrains('budget')
     def _check_park_has_extension(self):
@@ -31,7 +32,7 @@ class Project(models.Model):
 
     def action_confirm(self):
         for r in self:
-            r.state = 'confirm'
+            r.state = '2.confirm'
             return {
                 'effect': {
                     'fadeout': 'slow',
@@ -42,8 +43,8 @@ class Project(models.Model):
             
     def action_done(self):
         for r in self:
-            r.state = 'done'
+            r.state = '3.done'
 
     def action_draft(self):
         for r in self:
-            r.state = 'draft'
+            r.state = '1.draft'

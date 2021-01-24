@@ -2,6 +2,7 @@ from odoo import models, fields, api, exceptions
 
 class Natural_Park(models.Model):
     _name = 'naturalparks.natural_park'
+    _order = 'name'
 
     name = fields.Char(string="Name", required=True)
     starting_date = fields.Date()

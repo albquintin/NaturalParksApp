@@ -2,19 +2,21 @@ from odoo import models, fields, api, exceptions
 
 class Visitor(models.Model):
     _name = 'naturalparks.visitor'
+    _order = 'name'
 
     name = fields.Char(required=True)    
     dni = fields.Char(required=True)
     address = fields.Char()
     job = fields.Char()
+    color = fields.Integer()
     state = fields.Selection([
-            ('draft', 'Draft'),
-            ('confirm', 'Confirm'),
-            ('done', 'Done'),
-        ], string='Status', readonly=True, default='draft')
+            ('1.draft', 'Draft'),
+            ('2.confirm', 'Confirm'),
+            ('3.done', 'Done'),
+        ], string='Status', readonly=True, default='1.draft')
 
-    natural_park_id = fields.Many2one('naturalparks.natural_park', string="Natural Park", required=True)
-    acommodation_id = fields.Many2one('naturalparks.acommodation', ondelete='cascade', string="Acommodation", required=True)
+    natural_park_id = fields.Many2one('naturalparks.natural_park', string="Natural Park", ondelete='cascade', required=True)
+    acommodation_id = fields.Many2one('naturalparks.acommodation', string="Acommodation", required=True)
     management_id = fields.Many2one('naturalparks.management', string="Person who registered this visitor")
 
     @api.onchange('natural_park_id')
@@ -30,7 +32,7 @@ class Visitor(models.Model):
 
     def action_confirm(self):
         for r in self:
-            r.state = 'confirm'
+            r.state = '2.confirm'
             return {
                 'effect': {
                     'fadeout': 'slow',
@@ -41,10 +43,8 @@ class Visitor(models.Model):
             
     def action_done(self):
         for r in self:
-            r.state = 'done'
+            r.state = '3.done'
 
     def action_draft(self):
         for r in self:
-            r.state = 'draft'
-
-    
+            r.state = '1.draft'

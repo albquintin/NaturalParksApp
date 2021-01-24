@@ -2,11 +2,12 @@ from odoo import models, fields, api, exceptions
 
 class Area(models.Model):
     _name = 'naturalparks.area'
+    _order = 'natural_park_id'
 
     name = fields.Char(string="Name", required=True)
     extension = fields.Integer(string="Extension (in km2)", required=True)
 
-    natural_park_id = fields.Many2one('naturalparks.natural_park', string="Natural Park", required=True)
+    natural_park_id = fields.Many2one('naturalparks.natural_park', string="Natural Park", ondelete='cascade', required=True)
     community_id = fields.Many2one('naturalparks.community', string="Community", required=True)
 
     @api.constrains('extension')

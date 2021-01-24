@@ -6,10 +6,10 @@
             <field name="arch" type="xml">
                 <form string="Visitor Form">
                     <header>
-                        <button name="action_confirm" type="object" string="Confirm" states="draft" class="oe_highlight"/>
-                        <button name="action_done" type="object" string="Done" states="confirm" class="oe_highlight"/>
-                        <button name="action_draft" type="object"  string="Reset to draft" states="confirm,done" />
-                        <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done" />
+                        <button name="action_confirm" type="object" string="Confirm" states="1.draft" class="oe_highlight"/>
+                        <button name="action_done" type="object" string="Done" states="2.confirm" class="oe_highlight"/>
+                        <button name="action_draft" type="object"  string="Reset to draft" states="2.confirm,3.done" />
+                        <field name="state" widget="statusbar" statusbar_visible="1.draft,2.confirm,3.done" />
                     </header>
                     <sheet>
                         <group>
@@ -30,7 +30,7 @@
             <field name="name">visitor.tree</field>
             <field name="model">naturalparks.visitor</field>
             <field name="arch" type="xml">
-                <tree decoration-muted="state == 'draft'" decoration-success="state == 'confirm'" decoration-danger="state == 'done'" string="Visitor Tree">
+                <tree decoration-muted="state == '1.draft'" decoration-success="state == '2.confirm'" decoration-danger="state == '3.done'" string="Visitor Tree">
                     <field name="name"/>                    
                     <field name="dni"/>
                     <field name="address"/>
@@ -54,10 +54,61 @@
             </field>
         </record>
 
+        <record model="ir.ui.view" id="visitor_kanban_view">
+            <field name="name">naturalparks.visitor.kanban</field>
+            <field name="model">naturalparks.visitor</field>
+            <field name="arch" type="xml">
+                <kanban default_group_by="state">
+                    <field name="color"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div
+                                    t-attf-class="oe_kanban_color_{{kanban_getcolor(record.color.raw_value)}}
+                                                oe_kanban_global_click_edit oe_semantic_html_override
+                                                oe_kanban_card {{record.group_fancy==1 ? 'oe_kanban_card_fancy' : ''}}">
+                                <div class="oe_dropdown_kanban">
+                                    <div class="oe_dropdown_toggle">
+                                        <i class="fa fa-bars fa-lg" title="Manage" aria-label="Manage"/>
+                                        <ul class="oe_dropdown_menu">
+                                            <li>
+                                                <a type="delete">Delete</a>
+                                            </li>
+                                            <li>
+                                                <ul class="oe_kanban_colorpicker"
+                                                    data-field="color"/>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="oe_clear"></div>
+                                </div>
+                                <div t-attf-class="oe_kanban_content">
+                                    Visitor Name:
+                                    <field name="name"/>
+                                    <br/>
+                                    Dni:
+                                    <field name="dni"/>
+                                    <br/>
+                                    Natural Park:
+                                    <field name="natural_park_id"/>
+                                    <br/>
+                                    Acommodation:
+                                    <field name="acommodation_id"/>
+                                    <br/>
+                                    State:
+                                    <field name="state"/>
+                                    
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
         <record model="ir.actions.act_window" id="visitor_list_action">
             <field name="name">Visitor</field>
             <field name="res_model">naturalparks.visitor</field>
-            <field name="view_mode">tree,form,pivot</field>
+            <field name="view_mode">tree,form,kanban,pivot</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">Create a new visitor
                 </p>

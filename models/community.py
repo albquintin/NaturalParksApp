@@ -2,6 +2,7 @@ from odoo import models, fields, api, exceptions
 
 class Community(models.Model):
     _name = 'naturalparks.community'
+    _order = 'name'
 
     name = fields.Char(string="Name", required=True)
     extension = fields.Integer(string="Extension (in km2)", required=True)

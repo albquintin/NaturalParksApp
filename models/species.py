@@ -17,6 +17,7 @@ class Species(models.Model):
 class Plant(models.Model):
     _name = 'naturalparks.plant'
     _inherit = 'naturalparks.species'
+    _order = 'name'
 
     blooming = fields.Boolean(string="Does the plant have blooming?")
     blooming_period = fields.Selection([('spring', 'Spring'), ('summer', 'Summer'), ('autumn', 'Autumn'), ('winter', 'Winter')])
@@ -41,6 +42,7 @@ class Plant(models.Model):
 class Animal(models.Model):
     _name = 'naturalparks.animal'
     _inherit = 'naturalparks.species'
+    _order = 'name'
 
     alimentation = fields.Selection([('carnivore','Carnivore'), ('herbivore','Herbivore'), ('omnivore','Omnivore')], required=True)
     mating_season = fields.Selection([('spring', 'Spring'), ('summer', 'Summer'), ('autumn', 'Autumn'), ('winter', 'Winter')])
@@ -60,6 +62,7 @@ class Animal(models.Model):
 class Mineral(models.Model):
     _name = 'naturalparks.mineral'
     _inherit = 'naturalparks.species'
+    _order = 'name'
 
     mineral_type = fields.Selection([('crystal', 'Crystal'), ('stone', 'Stone')], required=True)
     color = fields.Integer()
