@@ -30,7 +30,7 @@
             <field name="name">trip.tree</field>
             <field name="model">naturalparks.trip</field>
             <field name="arch" type="xml">
-                <tree string="Trip Tree">
+                <tree decoration-muted="state == 'draft'" decoration-success="state == 'confirm'" decoration-danger="state == 'done'" string="Trip Tree">
                     <field name="name"/>
                     <field name="trip_type"/>
                     <field name="starting_date"/>
@@ -38,6 +38,7 @@
                     <field name="natural_park_id"/>
                     <field name="acommodation_id"/>
                     <field name="total_visitors"/>
+                    <field name="state"/>
                 </tree>
             </field>
         </record>

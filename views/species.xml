@@ -10,7 +10,7 @@
                             <field name="name"/>
                             <field name="common_name"/>
                             <field name="area_ids"/>
-                            <field name="number_of_specimens"/>
+                            <field name="number_of_specimens" options='{"type": "number", "step": 1}'/>
                             <field name="blooming"/>
                             <field name="blooming_period"/>
                             <field name="is_eaten"/>
@@ -95,7 +95,7 @@
                             <field name="name"/>
                             <field name="common_name"/>
                             <field name="area_ids"/>
-                            <field name="number_of_specimens"/>
+                            <field name="number_of_specimens" options='{"type": "number", "step": 1}'/>
                             <field name="alimentation"/>
                             <field name="mating_season"/>
                             <field name="is_eaten"/>
@@ -123,50 +123,14 @@
             </field>
         </record>
 
-        <record model="ir.ui.view" id="animal_kanban_view">
-            <field name="name">naturalparks.animal.kanban</field>
+        <record  model="ir.ui.view" id="animal_pivot_view">
+            <field name="name">animal.pivot</field>
             <field name="model">naturalparks.animal</field>
             <field name="arch" type="xml">
-                <kanban default_group_by="alimentation">
-                    <field name="color"/>
-                    <templates>
-                        <t t-name="kanban-box">
-                            <div
-                                    t-attf-class="oe_kanban_color_{{kanban_getcolor(record.color.raw_value)}}
-                                                  oe_kanban_global_click_edit oe_semantic_html_override
-                                                  oe_kanban_card {{record.group_fancy==1 ? 'oe_kanban_card_fancy' : ''}}">
-                                <div class="oe_dropdown_kanban">
-                                    <div class="oe_dropdown_toggle">
-                                        <i class="fa fa-bars fa-lg" title="Manage" aria-label="Manage"/>
-                                        <ul class="oe_dropdown_menu">
-                                            <li>
-                                                <a type="delete">Delete</a>
-                                            </li>
-                                            <li>
-                                                <ul class="oe_kanban_colorpicker"
-                                                    data-field="color"/>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="oe_clear"></div>
-                                </div>
-                                <div t-attf-class="oe_kanban_content">
-                                    Binomial nomenclature:
-                                    <field name="name"/>
-                                    <br/>
-                                    Alimentation:
-                                    <field name="alimentation"/>
-                                    <br/>
-                                    Mating Season:
-                                    <field name="mating_season"/>
-                                    <br/>
-                                    Number of specimens:
-                                    <field name="number_of_specimens"/>
-                                </div>
-                            </div>
-                        </t>
-                    </templates>
-                </kanban>
+                <pivot string="Animal">
+                    <field name="alimentation" type="row"/>
+                    <field name="name"/>
+                </pivot>
             </field>
         </record>
 
@@ -184,7 +148,7 @@
         <record model="ir.actions.act_window" id="animal_list_action">
             <field name="name">Animal</field>
             <field name="res_model">naturalparks.animal</field>
-            <field name="view_mode">tree,form,kanban,graph</field>
+            <field name="view_mode">tree,form,graph,pivot</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">Create a new animal
                 </p>
@@ -249,54 +213,21 @@
             </field>
         </record>
 
-        <record model="ir.ui.view" id="mineral_kanban_view">
-            <field name="name">naturalparks.mineral.kanban</field>
+        <record  model="ir.ui.view" id="mineral_pivot_view">
+            <field name="name">mineral.pivot</field>
             <field name="model">naturalparks.mineral</field>
             <field name="arch" type="xml">
-                <kanban default_group_by="mineral_type">
-                    <field name="color"/>
-                    <templates>
-                        <t t-name="kanban-box">
-                            <div
-                                    t-attf-class="oe_kanban_color_{{kanban_getcolor(record.color.raw_value)}}
-                                                  oe_kanban_global_click_edit oe_semantic_html_override
-                                                  oe_kanban_card {{record.group_fancy==1 ? 'oe_kanban_card_fancy' : ''}}">
-                                <div class="oe_dropdown_kanban">
-                                    <div class="oe_dropdown_toggle">
-                                        <i class="fa fa-bars fa-lg" title="Manage" aria-label="Manage"/>
-                                        <ul class="oe_dropdown_menu">
-                                            <li>
-                                                <a type="delete">Delete</a>
-                                            </li>
-                                            <li>
-                                                <ul class="oe_kanban_colorpicker"
-                                                    data-field="color"/>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="oe_clear"></div>
-                                </div>
-                                <div t-attf-class="oe_kanban_content">
-                                    Binomial nomenclature:
-                                    <field name="name"/>
-                                    <br/>
-                                    Common name:
-                                    <field name="common_name"/>
-                                    <br/>
-                                    Type:
-                                    <field name="mineral_type"/>
-                                </div>
-                            </div>
-                        </t>
-                    </templates>
-                </kanban>
+                <pivot string="Mineral">
+                    <field name="mineral_type" type="row"/>
+                    <field name="name"/>
+                </pivot>
             </field>
         </record>
 
         <record model="ir.actions.act_window" id="mineral_list_action">
             <field name="name">Mineral</field>
             <field name="res_model">naturalparks.mineral</field>
-            <field name="view_mode">tree,form,kanban</field>
+            <field name="view_mode">tree,form,pivot</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">Create a new mineral
                 </p>

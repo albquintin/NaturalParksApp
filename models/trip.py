@@ -20,17 +20,21 @@ class Trip(models.Model):
             ('done', 'Done'),
         ], string='Status', readonly=True, default='draft')
 
-    @api.constrains('natural_park_id', 'acommodation_id')
-    def _check_acommodation_is_in_the_park(self):
+    @api.onchange('natural_park_id')
+    def onchange_natural_park_id_check_acommodation(self):
         for r in self:
-            if r.acommodation_id.natural_park_id != r.natural_park_id:
-                raise exceptions.ValidationError("The acommodation must be in the park")
+            return {'domain': {'acommodation_id': [('natural_park_id', '=', r.natural_park_id.id)]}}
 
-    @api.constrains('acommodation_id', 'visitor_ids')
-    def _check_visitors_are_from_the_park(self):
+    @api.onchange('natural_park_id')
+    def onchange_natural_park_id_check_visitors(self):
         for r in self:
-            if r.visitor_ids.acommodation_id != r.acommodation_id and len(r.visitor_ids) > 0:
-                raise exceptions.ValidationError("The visitor must be in the acommodation") 
+            return {'domain': {'visitor_ids': [('natural_park_id', '=', r.natural_park_id.id)]}}
+
+    @api.constrains('natural_park_id', 'visitor_ids')
+    def _check_visitors(self):
+        for r in self:
+            if r.visitor_ids.natural_park_id != r.natural_park_id:
+                raise exceptions.ValidationError("Visitors must be in the park")
 
     @api.constrains('starting_date', 'ending_date')
     def _check_ending_date_is_after_starting_date(self):

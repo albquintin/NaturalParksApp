@@ -31,11 +31,10 @@ class Vigilance(models.Model):
     area_id = fields.Many2one('naturalparks.area', string="Area", required=True)
     car_id = fields.Many2one('naturalparks.car', string="Car", required=True)
 
-    @api.constrains('natural_park_id', 'area_id')
-    def _check_area_is_in_the_park(self):
+    @api.onchange('natural_park_id')
+    def onchange_acommodation_id(self):
         for r in self:
-            if r.area_id.natural_park_id != r.natural_park_id:
-                raise exceptions.ValidationError("The area must be in the park")
+            return {'domain': {'area_id': [('natural_park_id', '=', r.natural_park_id.id)]}}
 
 
 class Car(models.Model):
@@ -57,8 +56,7 @@ class Conservation(models.Model):
     area_id = fields.Many2one('naturalparks.area', string="Area", required=True)
     specialty = fields.Selection([('cleaning', 'Cleaning'), ('roads', 'Roads'), ('others', 'Others')]) 
 
-    @api.constrains('natural_park_id', 'area_id')
-    def _check_area_is_in_the_park(self):
+    @api.onchange('natural_park_id')
+    def onchange_acommodation_id(self):
         for r in self:
-            if r.area_id.natural_park_id != r.natural_park_id:
-                raise exceptions.ValidationError("The area must be in the park")
+            return {'domain': {'area_id': [('natural_park_id', '=', r.natural_park_id.id)]}}

@@ -13,8 +13,8 @@
                     </header>
                     <sheet>
                         <group>
-                            <field name="dni"/>
                             <field name="name"/>
+                            <field name="dni"/>
                             <field name="address"/>
                             <field name="job"/>
                             <field name="natural_park_id"/>
@@ -30,14 +30,15 @@
             <field name="name">visitor.tree</field>
             <field name="model">naturalparks.visitor</field>
             <field name="arch" type="xml">
-                <tree string="Visitor Tree">
+                <tree decoration-muted="state == 'draft'" decoration-success="state == 'confirm'" decoration-danger="state == 'done'" string="Visitor Tree">
+                    <field name="name"/>                    
                     <field name="dni"/>
-                    <field name="name"/>
                     <field name="address"/>
                     <field name="job"/>
                     <field name="natural_park_id"/>
                     <field name="acommodation_id"/>
                     <field name="management_id"/>
+                    <field name="state"/>
                 </tree>
             </field>
         </record>

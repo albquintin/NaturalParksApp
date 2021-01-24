@@ -9,7 +9,7 @@
                         <group>
                             <field name="name"/>
                             <field name="starting_date"/>
-                            <field name="extension"/>
+                            <field name="extension" options='{"type": "number", "step": 1}'/>
                             <field name="community_ids"/>
                         </group>
                     </sheet>

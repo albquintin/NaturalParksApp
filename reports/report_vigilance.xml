@@ -1,11 +1,11 @@
 <odoo>
     <report
-        id="report_management"
-        model="naturalparks.management"
-        string="Management Employee Report"
+        id="report_vigilance"
+        model="naturalparks.vigilance"
+        string="Vigilance Employee Report"
         report_type="qweb-pdf"
-        name="RecuperacionOdoo.report_management_view"
-        file="RecuperacionOdoo.report_management"
+        name="RecuperacionOdoo.report_vigilance_view"
+        file="RecuperacionOdoo.report_vigilance"
     />
 
     <template id="minimal_layout_inherit" inherit_id="web.minimal_layout">
@@ -14,7 +14,7 @@
       </xpath>
     </template>
 
-    <template id="report_management_view">
+    <template id="report_vigilance_view">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="doc">
                 
@@ -24,16 +24,16 @@
                 </div> 
                 <hr></hr>
                 <div class="page">
-                    <h1>Management Employee Report</h1>
+                    <h1>Vigilance Employee Report</h1>
                     <p style="font-size: 22px;"><b>Name:</b> <span t-field="doc.name"/> </p>
                     <p style="font-size: 22px;"><b>Dni:</b> <span t-field="doc.dni"/> </p>
                     <p style="font-size: 22px;"><b>Social Security:</b> <span t-field="doc.social_security"/></p>
                     <p style="font-size: 22px;"><b>Mobile:</b> <span t-field="doc.mobile_phone"/></p>
                     <p style="font-size: 22px;"><b>Landline:</b> <span t-field="doc.landline"/></p>
                     <hr></hr>
-                    <p style="font-size: 22px;"><b>Workplace:</b> <span t-field="doc.natural_park_id"/>
-                    (Entrance <span t-field="doc.number_entrance"/>)
-                    </p>
+                    <p style="font-size: 22px;"><b>Workplace:</b> <span t-field="doc.natural_park_id"/></p>
+                    <p style="font-size: 22px;"><b>Area:</b> <span t-field="doc.area_id"/></p>
+                    <p style="font-size: 22px;"><b>Car:</b> <span t-field="doc.car_id"/></p>
                     <p style="font-size: 22px;"><b>Salary:</b> <span t-field="doc.salary"/> €</p>
                 </div>
                 

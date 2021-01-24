@@ -15,7 +15,7 @@
                         <field name="name"/>
                         <field name="species_id"/>
                         <field name="research_ids"/>
-                        <field name="budget"/>
+                        <field name="budget" options='{"type": "number", "step": 1000}'/>
                         <field name="starting_date"/>
                         <field name="ending_date"/>
                     </group>
@@ -28,14 +28,26 @@
         <field name="name">project.tree</field>
         <field name="model">naturalparks.project</field>
         <field name="arch" type="xml">
-            <tree string="Project Tree">
+            <tree decoration-muted="state == 'draft'" decoration-success="state == 'confirm'" decoration-danger="state == 'done'" string="Project Tree">
                 <field name="name"/>
                 <field name="species_id"/>
                 <field name="research_ids"/>
                 <field name="budget"/>
                 <field name="starting_date"/>
                 <field name="ending_date"/>
+                <field name="state"/>
             </tree>
+        </field>
+    </record>
+
+    <record  model="ir.ui.view" id="project_pivot_view">
+        <field name="name">project.pivot</field>
+        <field name="model">naturalparks.project</field>
+        <field name="arch" type="xml">
+            <pivot string="Project">
+                <field name="state" type="row"/>
+                <field name="name"/>
+            </pivot>
         </field>
     </record>
 
@@ -115,7 +127,7 @@
     <record model="ir.actions.act_window" id="project_list_action">
         <field name="name">Project</field>
         <field name="res_model">naturalparks.project</field>
-        <field name="view_mode">tree,form,calendar,kanban,graph</field>
+        <field name="view_mode">tree,form,calendar,kanban,graph,pivot</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">Create a new Project
             </p>

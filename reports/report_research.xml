@@ -30,10 +30,10 @@
                     <p style="font-size: 22px;"><b>Social Security:</b> <span t-field="doc.social_security"/></p>
                     <p style="font-size: 22px;"><b>Mobile:</b> <span t-field="doc.mobile_phone"/></p>
                     <p style="font-size: 22px;"><b>Landline:</b> <span t-field="doc.landline"/></p>
-                    <p style="font-size: 22px;"><b>Salary:</b> <span t-field="doc.salary"/> €</p>
                     <hr></hr>
                     <p style="font-size: 22px;"><b>Workplace:</b> <span t-field="doc.natural_park_id"/></p>
                     <p style="font-size: 22px;"><b>Research Area:</b> <span t-field="doc.title"/></p>
+                    <p style="font-size: 22px;"><b>Salary:</b> <span t-field="doc.salary"/> €</p>
                 </div>
                 
             </t>

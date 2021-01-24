@@ -8,7 +8,7 @@
                     <sheet>
                         <group>
                             <field name="name"/>
-                            <field name="extension"/>
+                            <field name="extension" options='{"type": "number", "step": 1}'/>
                             <field name="natural_park_id"/>
                             <field name="community_id"/>
                         </group>

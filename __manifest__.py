@@ -39,5 +39,7 @@
         'reports/report_visitor.xml',
         'reports/report_research.xml',
         'reports/report_management.xml',
+        'reports/report_conservation.xml',
+        'reports/report_vigilance.xml',
     ],
 }

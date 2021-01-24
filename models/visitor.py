@@ -3,8 +3,8 @@ from odoo import models, fields, api, exceptions
 class Visitor(models.Model):
     _name = 'naturalparks.visitor'
 
+    name = fields.Char(required=True)    
     dni = fields.Char(required=True)
-    name = fields.Char(required=True)
     address = fields.Char()
     job = fields.Char()
     state = fields.Selection([
@@ -17,11 +17,16 @@ class Visitor(models.Model):
     acommodation_id = fields.Many2one('naturalparks.acommodation', ondelete='cascade', string="Acommodation", required=True)
     management_id = fields.Many2one('naturalparks.management', string="Person who registered this visitor")
 
-    @api.constrains('natural_park_id', 'acommodation_id')
-    def _check_acommodation_is_in_the_park(self):
+    @api.onchange('natural_park_id')
+    def filter_acommodation(self):
         for r in self:
-            if r.acommodation_id.natural_park_id != r.natural_park_id:
-                raise exceptions.ValidationError("The acommodation must be in the park")
+            return {'domain': {'acommodation_id': [('natural_park_id', '=', r.natural_park_id.id)]}}
+
+    @api.onchange('natural_park_id')
+    def filter_management_employee(self):
+        for r in self:
+            return {'domain': {'management_id': [('natural_park_id', '=', r.natural_park_id.id)]}}
+
 
     def action_confirm(self):
         for r in self:

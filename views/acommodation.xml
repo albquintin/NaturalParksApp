@@ -7,7 +7,7 @@
                     <sheet>
                         <group>
                             <field name="name"/>
-                            <field name="capacity"/>
+                            <field name="capacity" options='{"type": "number", "step": 1}'/>
                             <field name="category"/>
                             <field name="natural_park_id"/>
                         </group>
@@ -33,7 +33,7 @@
             <field name="name">acommodation.pivot</field>
             <field name="model">naturalparks.acommodation</field>
             <field name="arch" type="xml">
-                <pivot string="Trip">
+                <pivot string="Acommodation">
                     <field name="natural_park_id" type="row"/>
                     <field name="name"/>
                 </pivot>
