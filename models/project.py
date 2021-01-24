@@ -16,7 +16,7 @@ class Project(models.Model):
             ('1.draft', 'Draft'),
             ('2.confirm', 'Confirm'),
             ('3.done', 'Done'),
-        ], string='Status', readonly=True, default='1.draft')
+        ], string='Status', default='1.draft')
 
     @api.constrains('budget')
     def _check_park_has_extension(self):

@@ -11,15 +11,15 @@ class Trip(models.Model):
     ending_date = fields.Datetime(required=True)
     color = fields.Integer()
 
-    natural_park_id = fields.Many2one('naturalparks.natural_park', string="Natural Park", required=True)
-    acommodation_id = fields.Many2one('naturalparks.acommodation', ondelete='cascade', string="Acommodation Organizer", required=True)
+    natural_park_id = fields.Many2one('naturalparks.natural_park', ondelete='cascade', string="Natural Park", required=True)
+    acommodation_id = fields.Many2one('naturalparks.acommodation', string="Acommodation Organizer", required=True)
     visitor_ids = fields.Many2many('naturalparks.visitor', string="Visitors")
     total_visitors = fields.Integer(compute='_calculate_visitors')
     state = fields.Selection([
             ('1.draft', 'Draft'),
             ('2.confirm', 'Confirm'),
             ('3.done', 'Done'),
-        ], string='Status', readonly=True, default='1.draft')
+        ], string='Status', default='1.draft')
 
     @api.onchange('natural_park_id')
     def onchange_natural_park_id_check_acommodation(self):

@@ -153,6 +153,6 @@
     </record>
 
     <menuitem id="project_menu" name="Research Project"
-        parent="naturalparks_menu"
+        parent="staff_menu"
         action="project_list_action"/>
 </odoo>

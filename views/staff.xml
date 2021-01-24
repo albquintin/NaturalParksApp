@@ -76,9 +76,11 @@
         </field>
     </record>
 
-    
+    <menuitem id="staff_menu" name="Staff"
+                  parent="main_naturalparks_menu"/>
+
     <menuitem id="management_menu" name="Management Employee"
-        parent="naturalparks_menu"
+        parent="staff_menu"
         action="management_list_action"/>
 
     <!--Vigilance-->
@@ -165,7 +167,7 @@
     </record>
 
     <menuitem id="vigilance_menu" name="Vigilance Employee"
-        parent="naturalparks_menu"
+        parent="staff_menu"
         action="vigilance_list_action"/>
 
     <!--Car-->
@@ -251,7 +253,7 @@
 
     
     <menuitem id="car_menu" name="Car"
-        parent="naturalparks_menu"
+        parent="staff_menu"
         action="car_list_action"/>
     
     <!--Research-->
@@ -332,7 +334,7 @@
     </record>
     
     <menuitem id="research_menu" name="Research Employee"
-        parent="naturalparks_menu"
+        parent="staff_menu"
         action="research_list_action"/>
 
     <!--Conservation-->
@@ -423,8 +425,8 @@
             </search>
         </field>
     </record>
-    
+
     <menuitem id="conservation_menu" name="Conservation Employee"
-        parent="naturalparks_menu"
+        parent="staff_menu"
         action="conservation_list_action"/>        
 </odoo>

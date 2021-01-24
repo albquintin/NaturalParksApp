@@ -13,7 +13,7 @@ class Visitor(models.Model):
             ('1.draft', 'Draft'),
             ('2.confirm', 'Confirm'),
             ('3.done', 'Done'),
-        ], string='Status', readonly=True, default='1.draft')
+        ], string='Status', default='1.draft')
 
     natural_park_id = fields.Many2one('naturalparks.natural_park', string="Natural Park", ondelete='cascade', required=True)
     acommodation_id = fields.Many2one('naturalparks.acommodation', string="Acommodation", required=True)
