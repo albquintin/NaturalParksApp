@@ -5,7 +5,7 @@
             <field name="name">Trips</field>
             <field name="res_model">naturalparks.trip</field>
             <field name="view_mode">calendar</field>
-            <field name="view_id" ref="RecuperacionOdoo.trip_calendar_view"/>
+            <field name="view_id" ref="NaturalParksApp.trip_calendar_view"/>
         </record>
         <record model="ir.actions.act_window" id="act_trip_list">
             <field name="name">Trips</field>

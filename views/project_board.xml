@@ -5,13 +5,13 @@
             <field name="name">Project Budget</field>
             <field name="res_model">naturalparks.project</field>
             <field name="view_mode">graph</field>
-            <field name="view_id" ref="RecuperacionOdoo.project_graph_view"/>
+            <field name="view_id" ref="NaturalParksApp.project_graph_view"/>
         </record>
         <record model="ir.actions.act_window" id="act_project_calendar">
             <field name="name">Projects</field>
             <field name="res_model">naturalparks.project</field>
             <field name="view_mode">calendar</field>
-            <field name="view_id" ref="RecuperacionOdoo.project_calendar_view"/>
+            <field name="view_id" ref="NaturalParksApp.project_calendar_view"/>
         </record>
         <record model="ir.actions.act_window" id="act_project_list">
             <field name="name">Projects</field>

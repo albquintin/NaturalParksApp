@@ -5,7 +5,7 @@
             <field name="name">Plants</field>
             <field name="res_model">naturalparks.plant</field>
             <field name="view_mode">graph</field>
-            <field name="view_id" ref="RecuperacionOdoo.plant_graph_view"/>
+            <field name="view_id" ref="NaturalParksApp.plant_graph_view"/>
         </record>
         <record model="ir.actions.act_window" id="act_plant_list">
             <field name="name">Plant</field>

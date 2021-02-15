@@ -4,13 +4,13 @@
         model="naturalparks.research"
         string="Researcher Report"
         report_type="qweb-pdf"
-        name="RecuperacionOdoo.report_research_view"
-        file="RecuperacionOdoo.report_research"
+        name="NaturalParksApp.report_research_view"
+        file="NaturalParksApp.report_research"
     />
 
     <template id="minimal_layout_inherit" inherit_id="web.minimal_layout">
       <xpath expr="//head" position="inside">
-             <link rel='stylesheet' href="/RecuperacionOdoo/static/src/css/style.css"/>
+             <link rel='stylesheet' href="/NaturalParksApp/static/src/css/style.css"/>
       </xpath>
     </template>
 
@@ -19,7 +19,7 @@
             <t t-foreach="docs" t-as="doc">
                 
                 <div class="header">
-                    <img src='/RecuperacionOdoo/static/src/img/logo.png'/>
+                    <img src='/NaturalParksApp/static/src/img/logo.png'/>
                     <h1>Natural Parks App</h1>
                 </div> 
                 <hr></hr>
